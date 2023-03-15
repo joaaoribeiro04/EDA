@@ -3,6 +3,7 @@
 #include "meio.h"
 #include "stdio.h"
 #include "cliente.h"
+#include "gestor.h"
 
 int main() {
 
@@ -25,7 +26,7 @@ int main() {
 */
 
 
-    Llist *listaclientes = lst_init();
+   /* Llist *listaclientes = lst_init();
 
     if (listaclientes == NULL)
         return 1;
@@ -36,8 +37,23 @@ int main() {
 
     ///ShowClient(listaclientes);
 
-    write_to_binary_file_client(listaclientes, "Clientes.bin");
+    write_to_binary_file_client(listaclientes, "Clientes.bin");*/
 
 
 
+
+ /* Llist *listagestor = lst_init();
+
+    if (listagestor == NULL)
+        return 1;
+
+    for (int i = 0; i < 2; i++){
+        ReadManager(listagestor);
+    }
+
+    ShowManager(listagestor);
+
+
+    write_to_binary_file_manager(listagestor, "Gestor.bin");
+*/
 }
