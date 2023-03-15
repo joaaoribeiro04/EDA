@@ -55,6 +55,36 @@ build CMakeFiles/EDA.dir/main.c.o: C_COMPILER__EDA_Debug /home/jp/Documents/EDA/
   OBJECT_DIR = CMakeFiles/EDA.dir
   OBJECT_FILE_DIR = CMakeFiles/EDA.dir
 
+build CMakeFiles/EDA.dir/meio.c.o: C_COMPILER__EDA_Debug /home/jp/Documents/EDA/meio.c || cmake_object_order_depends_target_EDA
+  DEP_FILE = CMakeFiles/EDA.dir/meio.c.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles/EDA.dir
+  OBJECT_FILE_DIR = CMakeFiles/EDA.dir
+
+build CMakeFiles/EDA.dir/gestor.c.o: C_COMPILER__EDA_Debug /home/jp/Documents/EDA/gestor.c || cmake_object_order_depends_target_EDA
+  DEP_FILE = CMakeFiles/EDA.dir/gestor.c.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles/EDA.dir
+  OBJECT_FILE_DIR = CMakeFiles/EDA.dir
+
+build CMakeFiles/EDA.dir/dlist.c.o: C_COMPILER__EDA_Debug /home/jp/Documents/EDA/dlist.c || cmake_object_order_depends_target_EDA
+  DEP_FILE = CMakeFiles/EDA.dir/dlist.c.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles/EDA.dir
+  OBJECT_FILE_DIR = CMakeFiles/EDA.dir
+
+build CMakeFiles/EDA.dir/cliente.c.o: C_COMPILER__EDA_Debug /home/jp/Documents/EDA/cliente.c || cmake_object_order_depends_target_EDA
+  DEP_FILE = CMakeFiles/EDA.dir/cliente.c.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles/EDA.dir
+  OBJECT_FILE_DIR = CMakeFiles/EDA.dir
+
+build CMakeFiles/EDA.dir/utils.c.o: C_COMPILER__EDA_Debug /home/jp/Documents/EDA/utils.c || cmake_object_order_depends_target_EDA
+  DEP_FILE = CMakeFiles/EDA.dir/utils.c.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles/EDA.dir
+  OBJECT_FILE_DIR = CMakeFiles/EDA.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target EDA
@@ -63,7 +93,7 @@ build CMakeFiles/EDA.dir/main.c.o: C_COMPILER__EDA_Debug /home/jp/Documents/EDA/
 #############################################
 # Link the executable EDA
 
-build EDA: C_EXECUTABLE_LINKER__EDA_Debug CMakeFiles/EDA.dir/main.c.o
+build EDA: C_EXECUTABLE_LINKER__EDA_Debug CMakeFiles/EDA.dir/main.c.o CMakeFiles/EDA.dir/meio.c.o CMakeFiles/EDA.dir/gestor.c.o CMakeFiles/EDA.dir/dlist.c.o CMakeFiles/EDA.dir/cliente.c.o CMakeFiles/EDA.dir/utils.c.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/EDA.dir
   POST_BUILD = :
