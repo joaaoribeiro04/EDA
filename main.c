@@ -7,7 +7,7 @@
 
 int main() {
 
-    Llist *listaveiculos = lst_init();
+/*    Llist *listaveiculos = lst_init();
 
     if (listaveiculos == NULL)
         return 1;
@@ -16,13 +16,14 @@ int main() {
        ReadElectricVehicleFromIo(listaveiculos);
     }
     ShowEletricVehicles(listaveiculos);
-    /*ReadClientFromTextFile(listaveiculos,"Meios.txt");
+    ReadClientFromTextFile(listaveiculos,"Meios.txt");
 
     ShowEletricVehicles(listaveiculos);
 
-    WriteToTextFile(listaveiculos,"Meios.txt");
-*/
-  /*  Llist *listaclientes = lst_init();
+    WriteToTextFile(listaveiculos,"Meios.txt");*/
+
+
+/*   Llist *listaclientes = lst_init();
 
     if (listaclientes == NULL)
         return 1;
@@ -31,12 +32,10 @@ int main() {
         ReadClient(listaclientes);
     }
 
-    ShowClient(listaclientes);
+    ShowClient(listaclientes);*/
 
-
-   puts();
-    write_to_binary_file_client(listaclientes, "Clientes.bin");*/
-    puts(""
+    /*write_to_binary_file_client(listaclientes, "Clientes.bin");*/
+/*    puts(""
             );
     puts("");
 
@@ -51,9 +50,9 @@ int main() {
     );
     puts("");
 
-    ShowEletricVehicles(listaveiculos);
+    ShowEletricVehicles(listaveiculos);*/
 
- /* Llist *listagestor = lst_init();
+/* Llist *listagestor = lst_init();
 
     if (listagestor == NULL)
         return 1;
@@ -62,9 +61,9 @@ int main() {
         ReadManager(listagestor);
     }
 
-    ShowManager(listagestor);
+    ShowManager(listagestor);*/
 
 
-    write_to_binary_file_manager(listagestor, "Gestor.bin");
-*/
+   /* write_to_binary_file_manager(listagestor, "Gestor.bin");*/
+
 }
