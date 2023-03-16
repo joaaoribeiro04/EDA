@@ -1,11 +1,11 @@
 #include "meio.h"
 
-void AllocEletricVehicle(Llist *l,char *type, int battery_lvl, float cph) {
+void AllocEletricVehicle(Llist *l,int id,char *type, int battery_lvl, float cph) {
     ElectricVehicle *v = (ElectricVehicle*) malloc(sizeof (ElectricVehicle));
     if(v == NULL)
         return;
 
-    v->id = 0;
+    v->id = id;
     v->type = (char*) malloc(strlen(type) + 1); // Allocate space for a new string
     if(v->type == NULL) {
         free(v); // Clean up allocated memory
@@ -17,6 +17,49 @@ void AllocEletricVehicle(Llist *l,char *type, int battery_lvl, float cph) {
     v->cost_per_hour = cph;
 
     l->push_t(l,v);
+}
+
+void SetEletricVehicle(Llist *l, int id , char *new_type, int new_battery_lvl, float new_cph) {
+    ElectricVehicle *v = NULL;
+    size_t pos = 0;
+    for (pos = 0; pos < l->len; pos++) {
+           v = l->get(l,pos);
+           if (v->id == id)
+               break;
+           if(pos == l->len -1)
+               return;
+    }
+    if(v == NULL)
+        return;
+
+    if (v->type)
+        free(v->type);
+    v->type = (char*) malloc(strlen(new_type) + 1); // Allocate space for a new string
+    if(v->type == NULL) {
+        free(v); // Clean up allocated memory
+        printf("Failed to alloc");
+        return;
+    }
+    strcpy(v->type, new_type); // Copy the contents of type into the new string
+    v->battery_level = new_battery_lvl;
+    v->cost_per_hour = new_cph;
+}
+
+void RmEletricVehicle(Llist *l, int id ){
+    ElectricVehicle *v = NULL;
+    size_t pos = 0;
+    for (pos = 0; pos < l->len; pos++) {
+           v = l->get(l,pos);
+           if (v->id == id)
+               break;
+           if(pos == l->len -1)
+               return;
+    }
+    if (v->type)
+        free(v->type);
+
+    l->rm(l,pos);
+    free(v);
 }
 
 void ShowEletricVehicles(Llist* l) {
@@ -32,11 +75,18 @@ void ShowEletricVehicles(Llist* l) {
 }
 
 void ReadElectricVehicleFromIo(Llist *l) {
+    int id;
     char type[100];
     int battery_lvl;
     float cph;
 
     // Get input from user
+    printf("Enter ID: ");
+    if(scanf("%d", &id) != 1) {
+        printf("Invalid input for ID\n");
+        CleanStdin();
+        return;
+    }
     printf("Enter vehicle type: ");
     if(scanf("%99s", type) != 1) {
         printf("Invalid input for vehicle type\n");
@@ -56,8 +106,9 @@ void ReadElectricVehicleFromIo(Llist *l) {
         return;
     }
 
+
     // Allocate new ElectricVehicle struct
-    AllocEletricVehicle(l, type, battery_lvl, cph);
+    AllocEletricVehicle(l, id, type, battery_lvl, cph);
 }
 
 void WriteToTextFile(Llist *l, const char *filename) {
