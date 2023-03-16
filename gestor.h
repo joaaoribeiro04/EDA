@@ -6,12 +6,13 @@
 #include "string.h"
 
 typedef struct gestor {
+    int id;
     char *username;
     char *password;
     struct gestor* next;
 } Gestor;
 
-void AllocManager(Llist *l, char *username, char *password);
+void AllocManager(Llist *l, int id, char *username, char *password);
 void ReadManager(Llist *l);
 void ShowManager(Llist* l);
 void WriteManagerToTextFile(Llist *l, const char *filename);

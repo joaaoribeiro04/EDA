@@ -18,7 +18,7 @@ typedef struct electric_vehicle {
     struct electric_vehicle* next;
 } ElectricVehicle;
 
-void AllocEletricVehicle(Llist *l,int id,char *type, int battery_lvl, float cph);
+void AllocEletricVehicle(Llist *l,int id, char *type, int battery_lvl, float cph);
 void ReadElectricVehicleFromIo(Llist *l);
 void ShowEletricVehicles(Llist* l);
 void WriteToTextFile(Llist *l, const char *filename);

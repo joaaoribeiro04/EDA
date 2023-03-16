@@ -1,6 +1,6 @@
 #include "meio.h"
 
-void AllocEletricVehicle(Llist *l,int id,char *type, int battery_lvl, float cph) {
+void AllocEletricVehicle(Llist *l,int id, char *type, int battery_lvl, float cph) {
     ElectricVehicle *v = (ElectricVehicle*) malloc(sizeof (ElectricVehicle));
     if(v == NULL)
         return;
@@ -163,6 +163,7 @@ void write_to_binary_file(Llist *l, const char *filename) {
         if (v == NULL) {
             continue;
         }
+        fwrite(&v->id, sizeof(int), 1, file);
         fwrite(v->type, sizeof(char), strlen(v->type) + 1, file);
         fwrite(&v->battery_level, sizeof(int), 1, file);
         fwrite(&v->cost_per_hour, sizeof(float), 1, file);

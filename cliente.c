@@ -2,11 +2,12 @@
 
 
 
-void AllocClient(Llist *l, int nif, char *name, char *address, float balance) {
+void AllocClient(Llist *l, int id, int nif, char *name, char *address, float balance) {
     Client *v = (Client*) malloc(sizeof (Client));
     if(v == NULL)
         return;
 
+    v->id = id;
     v->nif = nif;
     v->name = (char*) malloc(strlen(name) + 1); // Allocate space for a new string
     if(v->name == NULL) {
@@ -33,6 +34,7 @@ void ShowClient(Llist* l) {
         Client *v = l->get(l,i);
         if (v == NULL)
             continue;
+        printf("ID do cliente -> %d\n", v->nif);
         printf("NIF do cliente -> %d\n", v->nif);
         printf("Nome do cliente -> %s\n", v->name);
         printf("Morada do cliente -> %s\n", v->address);
@@ -42,12 +44,19 @@ void ShowClient(Llist* l) {
 
 
 void ReadClient(Llist *l) {
+    int id;
     int nif;
     char name[100];
     char address[100];
     float balance;
 
     // Get input from user
+    printf("Enter client's ID: ");
+    if(scanf("%d", &id) != 1) {
+        printf("Invalid input for client's ID\n");
+        CleanStdin();
+        return;
+    }
     printf("Enter client's NIF: ");
     if(scanf("%d", &nif) != 1) {
         printf("Invalid input for client's NIF\n");
@@ -74,7 +83,7 @@ void ReadClient(Llist *l) {
     }
 
     // Allocate new ElectricVehicle struct
-    AllocClient(l, nif, name, address, balance);
+    AllocClient(l, id, nif, name, address, balance);
 }
 void WriteClientToTextFile(Llist *l, const char *filename) {
     FILE *file = fopen(filename, "w");
@@ -87,7 +96,7 @@ void WriteClientToTextFile(Llist *l, const char *filename) {
         Client *v = l->get(l, i);
         if (v == NULL)
             continue;
-        fprintf(file, "%d %s %s %f\n", v->nif, v->name, v->address, v->balance);
+        fprintf(file, "%d %d %s %s %f\n", v-> id, v->nif, v->name, v->address, v->balance);
     }
 
     fclose(file);
@@ -99,14 +108,16 @@ void ReadClientFromTextFile(Llist *l, const char *filename) {
         printf("Error opening file!\n");
         return;
     }
+    int id;
     int nif;
     char name[100];
     char address[100];
     float balance;
 
 
-    while (fscanf(file, "%d %s %s %f", &nif, name, address, &balance) == 4) {
+    while (fscanf(file, "%d %d %s %s %f", &id, &nif, name, address, &balance) == 4) {
         Client *v = (Client *) malloc(sizeof(Client));
+        v->id = id;
         v->nif = nif;
         v->name = (char*) malloc(strlen(name) + 1);
         strcpy(v->name, name);
@@ -130,6 +141,7 @@ void write_to_binary_file_client(Llist *l, const char *filename) {
         if (v == NULL) {
             continue;
         }
+        fwrite(&v->id, sizeof(int), 1, file);
         fwrite(&v->nif, sizeof(int), 1, file);
         fwrite(v->name, sizeof(char), strlen(v->name) + 1, file);
         fwrite(v->address, sizeof(char), strlen(v->address) + 1, file);

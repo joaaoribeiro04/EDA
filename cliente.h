@@ -7,6 +7,7 @@
 
 
 typedef struct client {
+    int id;
     int nif;
     char *name;
     char *address;
@@ -14,7 +15,7 @@ typedef struct client {
     struct client* next;
 } Client;
 
-void AllocClient(Llist *l, int nif, char *name, char *address, float balance);
+void AllocClient(Llist *l, int id, int nif, char *name, char *address, float balance);
 void ReadClient(Llist *l);
 void ShowClient(Llist* l);
 void WriteClientToTextFile(Llist *l, const char *filename);
