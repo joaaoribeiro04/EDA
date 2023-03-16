@@ -1,7 +1,5 @@
 #include "meio.h"
 
-
-
 void AllocEletricVehicle(Llist *l,char *type, int battery_lvl, float cph) {
     ElectricVehicle *v = (ElectricVehicle*) malloc(sizeof (ElectricVehicle));
     if(v == NULL)
