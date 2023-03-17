@@ -7,63 +7,30 @@
 
 int main() {
 
-/*    Llist *listaveiculos = lst_init();
-
-    if (listaveiculos == NULL)
-        return 1;
-
-    for (int i = 0; i < 2; i++){
-       ReadElectricVehicleFromIo(listaveiculos);
-    }
-    ShowEletricVehicles(listaveiculos);
-    ReadClientFromTextFile(listaveiculos,"Meios.txt");
-
-    ShowEletricVehicles(listaveiculos);
-
-    WriteToTextFile(listaveiculos,"Meios.txt");*/
-
-
-/*   Llist *listaclientes = lst_init();
+    Llist *listaclientes = lst_init();
 
     if (listaclientes == NULL)
         return 1;
 
     for (int i = 0; i < 2; i++){
-        ReadClient(listaclientes);
+       ReadClient(listaclientes);
     }
+    ShowClient(listaclientes);
 
-    ShowClient(listaclientes);*/
+    WriteClientToTextFile(listaclientes,"Clientes.txt");
 
-    /*write_to_binary_file_client(listaclientes, "Clientes.bin");*/
-/*    puts(""
-            );
-    puts("");
 
-    SetEletricVehicle(listaveiculos, 69, "bicicleta33333", 1,1);
+    SetClient(listaclientes, 20, 11111, "joao", "igreja nº13", 124);
 
-    ShowEletricVehicles(listaveiculos);
+    ShowClient(listaclientes);
 
-    RmEletricVehicle(listaveiculos, 69);
+    RmClient(listaclientes, 21);
 
-    // RmEletricVehicle(listaveiculos, 65);
     puts(""
     );
     puts("");
 
-    ShowEletricVehicles(listaveiculos);*/
+    ShowClient(listaclientes);
 
-/* Llist *listagestor = lst_init();
-
-    if (listagestor == NULL)
-        return 1;
-
-    for (int i = 0; i < 2; i++){
-        ReadManager(listagestor);
-    }
-
-    ShowManager(listagestor);*/
-
-
-   /* write_to_binary_file_manager(listagestor, "Gestor.bin");*/
 
 }

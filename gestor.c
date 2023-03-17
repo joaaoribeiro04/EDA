@@ -24,6 +24,56 @@ void AllocManager(Llist *l,int id, char *username, char *password) {
     l->push_t(l,v);
 }
 
+void SetManager(Llist *l, int id , char *new_username, char *new_password) {
+    Gestor *v = NULL;
+    size_t pos = 0;
+    for (pos = 0; pos < l->len; pos++) {
+        v = l->get(l,pos);
+        if (v->id == id)
+            break;
+        if(pos == l->len -1)
+            return;
+    }
+    if(v == NULL)
+        return;
+
+    if (v->username)
+        free(v->username);
+    v->username = (char*) malloc(strlen(new_username) + 1); // Allocate space for a new string
+    if(v->username == NULL) {
+        free(v); // Clean up allocated memory
+        printf("Failed to alloc");
+        return;
+    }
+    strcpy(v->password, new_password); // Copy the contents of type into the new string
+    if (v->password)
+        free(v->password);
+    v->password = (char*) malloc(strlen(new_password) + 1); // Allocate space for a new string
+    if(v->password == NULL) {
+        free(v); // Clean up allocated memory
+        printf("Failed to alloc");
+        return;
+    }
+    strcpy(v->password, new_password); // Copy the contents of type into the new string
+}
+
+void RmManager(Llist *l, int id ){
+    Gestor *v = NULL;
+    size_t pos = 0;
+    for (pos = 0; pos < l->len; pos++) {
+        v = l->get(l,pos);
+        if (v->id == id)
+            break;
+        if(pos == l->len -1)
+            return;
+    }
+    if (v->username)
+        free(v->username);
+
+    l->rm(l,pos);
+    free(v);
+}
+
 
 void ShowManager(Llist* l) {
     for (size_t i = 0; i < l->len ; i++) {

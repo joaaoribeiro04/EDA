@@ -28,6 +28,58 @@ void AllocClient(Llist *l, int id, int nif, char *name, char *address, float bal
     l->push_t(l,v);
 }
 
+void SetClient(Llist *l, int id , int new_nif, char *new_name, char *new_address, float new_balance) {
+    Client *v = NULL;
+    size_t pos = 0;
+    for (pos = 0; pos < l->len; pos++) {
+        v = l->get(l,pos);
+        if (v->id == id)
+            break;
+        if(pos == l->len -1)
+            return;
+    }
+    if(v == NULL)
+        return;
+
+    v->nif = new_nif;
+    if (v->name)
+        free(v->name);
+    v->name = (char*) malloc(strlen(new_name) + 1); // Allocate space for a new string
+    if(v->name == NULL) {
+        free(v); // Clean up allocated memory
+        printf("Failed to alloc");
+        return;
+    }
+    strcpy(v->name, new_name); // Copy the contents of type into the new string
+    if (v->address)
+        free(v->address);
+    v->address = (char*) malloc(strlen(new_address) + 1); // Allocate space for a new string
+    if(v->address == NULL) {
+        free(v); // Clean up allocated memory
+        printf("Failed to alloc");
+        return;
+    }
+    strcpy(v->address, new_address); // Copy the contents of type into the new string
+    v->balance = new_balance;
+}
+
+void RmClient(Llist *l, int id ) {
+    Client *v = NULL;
+    size_t pos = 0;
+    for (pos = 0; pos < l->len; pos++) {
+        v = l->get(l,pos);
+        if (v->id == id)
+            break;
+        if(pos == l->len -1)
+            return;
+    }
+    if (v->name)
+        free(v->name);
+
+    l->rm(l,pos);
+    free(v);
+}
+
 
 void ShowClient(Llist* l) {
     for (size_t i = 0; i < l->len ; i++) {

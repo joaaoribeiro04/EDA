@@ -21,5 +21,7 @@ void ShowClient(Llist* l);
 void WriteClientToTextFile(Llist *l, const char *filename);
 void ReadClientFromTextFile(Llist *l, const char *filename);
 void write_to_binary_file_client(Llist *l, const char *filename);
+void SetClient(Llist *l, int id , int new_nif, char *new_name, char *new_address, float new_balance);
+void RmClient(Llist *l, int id );
 
 #endif
