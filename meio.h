@@ -25,6 +25,8 @@ void WriteToTextFile(Llist *l, const char *filename);
 void ReadFromTextFile(Llist *l, const char *filename);
 void write_to_binary_file(Llist *l, const char *filename);
 void SetEletricVehicle(Llist *l, int id , char *new_type, int new_battery_lvl, float new_cph, int new_autonomia);
+void SetAndReadEletricVehicle(Llist *l);
 void RmEletricVehicle(Llist *l, int id );
+void RmEletricVehicleAndReadId(Llist *l );
 
 #endif

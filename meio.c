@@ -49,6 +49,48 @@ void SetEletricVehicle(Llist *l, int id , char *new_type, int new_battery_lvl, f
     v->autonomia = new_autonomia;
 }
 
+/// Função que altera os dados de um veiculo eletrico
+void SetAndReadEletricVehicle(Llist *l) {
+    int id;
+    char type[100];
+    int battery_lvl;
+    float cph;
+    int autonomia;
+
+    /// Obter entrada do usuário
+    printf("Enter ID: ");
+    if(scanf("%d", &id) != 1) {
+        printf("Invalid input for ID\n");
+        CleanStdin();
+        return;
+    }
+    printf("Enter vehicle type: ");
+    if(scanf("%99s", type) != 1) {
+        printf("Invalid input for vehicle type\n");
+        CleanStdin();
+        return;
+    }
+    printf("Enter battery level: ");
+    if(scanf("%d", &battery_lvl) != 1) {
+        printf("Invalid input for battery level\n");
+        CleanStdin();
+        return;
+    }
+    printf("Enter cost per hour: ");
+    if(scanf("%f", &cph) != 1) {
+        printf("Invalid input for cost per hour\n");
+        CleanStdin();
+        return;
+    }
+    printf("Enter autonomy: ");
+    if(scanf("%d", &autonomia) != 1) {
+        printf("Invalid input for autonomy\n");
+        CleanStdin();
+        return;
+    }
+    SetEletricVehicle(l, id, type, battery_lvl, cph,autonomia);
+}
+
 /// Função que remove um veiculo eletrico
 void RmEletricVehicle(Llist *l, int id ){
     ElectricVehicle *v = NULL;
@@ -66,6 +108,20 @@ void RmEletricVehicle(Llist *l, int id ){
     l->rm(l,pos);
     free(v);
 }
+/// Função que remove um veiculo eletrico e le o id do teclado
+void RmEletricVehicleAndReadId(Llist *l ){
+    int id;
+
+    printf("Insert the vehicles's id to remove: ");
+    if(scanf("%d", &id) != 1) {
+        printf("Invalid input \n");
+        CleanStdin();
+        return;
+    }
+
+    RmEletricVehicle(l, id);
+}
+
 
 /// Função que lista veiculos eletricos
 void ShowEletricVehicles(Llist* l) {
