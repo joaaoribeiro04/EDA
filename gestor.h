@@ -18,6 +18,8 @@ void WriteManagerToTextFile(Llist *l, const char *filename);
 void ReadManagerFromTextFile(Llist *l, const char *filename);
 void write_to_binary_file_manager(Llist *l, const char *filename);
 void SetManager(Llist *l, int id , char *new_username, char *new_password);
+void SetAndReadManager(Llist *l);
 void RmManager(Llist *l, int id );
+void RmManagerAndReadId(Llist *l );
 
 #endif

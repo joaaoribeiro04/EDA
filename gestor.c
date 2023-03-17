@@ -58,6 +58,33 @@ void SetManager(Llist *l, int id , char *new_username, char *new_password) {
     strcpy(v->password, new_password); /// Copia o conteudo para uma nova string
 }
 
+/// Função que altera os dados de um gestor
+void SetAndReadManager(Llist *l) {
+    int id;
+    char *username;
+    char *password;
+
+    printf("Enter manager ID: ");
+    if(scanf("%d", &id) != 1) {
+        printf("Invalid input for manager ID\n");
+        CleanStdin();
+        return;
+    }
+    printf("Enter manager username: ");
+    if(scanf("%s", username) != 1) {
+        printf("Invalid input for manager username\n");
+        CleanStdin();
+        return;
+    }
+    printf("Enter manager password: ");
+    if(scanf("%s", password) != 1) {
+        printf("Invalid input for client's address\n");
+        CleanStdin();
+        return;
+    }
+    SetManager(l, id, username, password);
+}
+
 /// Função que remove um gestor
 void RmManager(Llist *l, int id ){
     Gestor *v = NULL;
@@ -74,6 +101,20 @@ void RmManager(Llist *l, int id ){
 
     l->rm(l,pos);
     free(v);
+}
+
+/// Função que remove um gestor e le o id do teclado
+void RmManagerAndReadId(Llist *l ){
+    int id;
+
+    printf("Insira o ID do gestor que quer remover ");
+    if(scanf("%d", &id) != 1) {
+        printf("Invalid input \n");
+        CleanStdin();
+        return;
+    }
+
+    RmManager(l, id);
 }
 
 /// Função que lista gestores

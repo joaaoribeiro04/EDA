@@ -1,7 +1,5 @@
 #include "cliente.h"
 
-
-
 void AllocClient(Llist *l, int id, int nif, char *name, char *address, float balance) {
     Client *v = (Client*) malloc(sizeof (Client));
     if(v == NULL)
@@ -64,6 +62,47 @@ void SetClient(Llist *l, int id , int new_nif, char *new_name, char *new_address
     v->balance = new_balance;
 }
 
+void SetAndReadClient(Llist *l) {
+    int id;
+    int nif;
+    char *name;
+    char *address;
+    float balance;
+
+
+    /// Obter entrada do usuário
+    printf("Enter client's ID: ");
+    if(scanf("%d", &id) != 1) {
+        printf("Invalid input for client's ID\n");
+        CleanStdin();
+        return;
+    }
+    printf("Enter client's NIF: ");
+    if(scanf("%d", &nif) != 1) {
+        printf("Invalid input for client's NIF\n");
+        CleanStdin();
+        return;
+    }
+    printf("Enter client's name: ");
+    if(scanf("%s", name) != 1) {
+        printf("Invalid input for client's name\n");
+        CleanStdin();
+        return;
+    }
+    printf("Enter client's address: ");
+    if(scanf("%s", address) != 1) {
+        printf("Invalid input for client's address\n");
+        CleanStdin();
+        return;
+    }
+    printf("Enter client's balance: ");
+    if(scanf("%f", &balance) != 1) {
+        printf("Invalid input for client's balance\n");
+        CleanStdin();
+        return;
+    }
+    SetClient(l, id, nif, name, address, balance);
+}
 /// Função que remove um cliente
 void RmClient(Llist *l, int id ) {
     Client *v = NULL;
@@ -80,6 +119,20 @@ void RmClient(Llist *l, int id ) {
 
     l->rm(l,pos);
     free(v);
+}
+
+/// Função que remove um cliente e le o id do teclado
+void RmClienAndReadId(Llist *l ){
+    int id;
+
+    printf("Insira o ID do cliente que quer remover ");
+    if(scanf("%d", &id) != 1) {
+        printf("Invalid input \n");
+        CleanStdin();
+        return;
+    }
+
+    RmClient(l, id);
 }
 
 /// Função que lista clientes

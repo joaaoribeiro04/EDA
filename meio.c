@@ -112,7 +112,7 @@ void RmEletricVehicle(Llist *l, int id ){
 void RmEletricVehicleAndReadId(Llist *l ){
     int id;
 
-    printf("Insert the vehicles's id to remove: ");
+    printf("Insira o ID do veiculo eletrico que quer remover ");
     if(scanf("%d", &id) != 1) {
         printf("Invalid input \n");
         CleanStdin();

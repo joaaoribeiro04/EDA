@@ -91,11 +91,11 @@ int main() {
                             break;
 
                         case 3:
-
+                            SetAndReadClient(listacliete);
                             break;
 
                         case 4:
-
+                            RmClienAndReadId(listacliete);
                             break;
 
                         case 5:
@@ -136,11 +136,11 @@ int main() {
                             break;
 
                         case 3:
-
+                            SetAndReadManager(listagestor);
                             break;
 
                         case 4:
-
+                            RmManagerAndReadId(listagestor);
                             break;
 
                         case 5:
