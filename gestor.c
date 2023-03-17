@@ -6,16 +6,16 @@ void AllocManager(Llist *l,int id, char *username, char *password) {
         return;
 
     v->id = id;
-    v->username = (char*) malloc(strlen(username) + 1); // Allocate space for a new string
+    v->username = (char*) malloc(strlen(username) + 1); /// Alocar espaço para uma nova string
     if(v->username == NULL) {
-        free(v); // Clean up allocated memory
+        free(v); /// Limpa a memoria alocada
         printf("Failed to alloc");
         return;
     }
     strcpy(v->username, username);
-    v->password = (char*) malloc(strlen(password) + 1); // Allocate space for a new string
+    v->password = (char*) malloc(strlen(password) + 1); /// Alocar espaço para uma nova string
     if(v->password == NULL) {
-        free(v); // Clean up allocated memory
+        free(v); /// Limpa a memoria alocada
         printf("Failed to alloc");
         return;
     }
@@ -24,6 +24,7 @@ void AllocManager(Llist *l,int id, char *username, char *password) {
     l->push_t(l,v);
 }
 
+/// Função que altera os dados de um gestor
 void SetManager(Llist *l, int id , char *new_username, char *new_password) {
     Gestor *v = NULL;
     size_t pos = 0;
@@ -39,24 +40,25 @@ void SetManager(Llist *l, int id , char *new_username, char *new_password) {
 
     if (v->username)
         free(v->username);
-    v->username = (char*) malloc(strlen(new_username) + 1); // Allocate space for a new string
+    v->username = (char*) malloc(strlen(new_username) + 1); /// Alocar espaço para uma nova string
     if(v->username == NULL) {
-        free(v); // Clean up allocated memory
+        free(v); /// Limpa a memoria alocada
         printf("Failed to alloc");
         return;
     }
-    strcpy(v->username, new_username); // Copy the contents of type into the new string
+    strcpy(v->username, new_username); /// Copia o conteudo para uma nova string
     if (v->password)
         free(v->password);
-    v->password = (char*) malloc(strlen(new_password) + 1); // Allocate space for a new string
+    v->password = (char*) malloc(strlen(new_password) + 1); /// Alocar espaço para uma nova string
     if(v->password == NULL) {
-        free(v); // Clean up allocated memory
+        free(v); /// Limpa a memoria alocada
         printf("Failed to alloc");
         return;
     }
-    strcpy(v->password, new_password); // Copy the contents of type into the new string
+    strcpy(v->password, new_password); /// Copia o conteudo para uma nova string
 }
 
+/// Função que remove um gestor
 void RmManager(Llist *l, int id ){
     Gestor *v = NULL;
     size_t pos = 0;
@@ -74,7 +76,7 @@ void RmManager(Llist *l, int id ){
     free(v);
 }
 
-
+/// Função que lista gestores
 void ShowManager(Llist* l) {
     for (size_t i = 0; i < l->len ; i++) {
         Gestor *v = l->get(l,i);
@@ -86,13 +88,13 @@ void ShowManager(Llist* l) {
     }
 }
 
-
+/// Função que insere novos gestores
 void ReadManager(Llist *l) {
     int id;
     char username[100];
     char password[100];
 
-    // Get input from user
+    /// Obter entrada do usuário
     printf("Enter manager ID: ");
     if(scanf("%d", &id) != 1) {
         printf("Invalid input for manager ID\n");
@@ -112,10 +114,11 @@ void ReadManager(Llist *l) {
         return;
     }
 
-    // Allocate new Manager struct
+    // Aloca a nova struct Manager
     AllocManager(l, id, username, password);
 }
 
+/// Função que guarda os dados de um gestor em ficheiro de texto (.txt)
 void WriteManagerToTextFile(Llist *l, const char *filename) {
     FILE *file = fopen(filename, "w");
     if (file == NULL) {
@@ -133,6 +136,7 @@ void WriteManagerToTextFile(Llist *l, const char *filename) {
     fclose(file);
 }
 
+/// Função de leitura do ficheiro de texto
 void ReadManagerFromTextFile(Llist *l, const char *filename) {
     FILE *file = fopen(filename, "r");
     if (file == NULL) {
@@ -157,6 +161,7 @@ void ReadManagerFromTextFile(Llist *l, const char *filename) {
     fclose(file);
 }
 
+///Função que guarda os dados de um gestor em binário (.bin)
 void write_to_binary_file_manager(Llist *l, const char *filename) {
     FILE *file = fopen(filename, "wb");
     if (file == NULL) {

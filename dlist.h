@@ -1,7 +1,3 @@
-//
-// Created by jp on 15-03-2023.
-//
-
 #ifndef EDA_DLIST_H
 #define EDA_DLIST_H
 
@@ -11,22 +7,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/// This code will be computational intensive when reading, so a Node
-/// with two entries justifies the cost in memory.
+/// Estrutura de dados: "Node"
 typedef struct node {
     void *data;
     struct node *next;
     struct node *prev;
 } Node;
 
-/// Associated "methods" and relevant information of a List should be here,
-/// functions are static and inlined so this is critical for their use outside
-/// the respective files.
+
+/// "métodos" e informações relevantes de uma lista devem estar aqui,
+/// as funções são estáticas e embutidas, então isso é crítico para o seu uso fora
+/// os respectivos arquivos.
 typedef struct llist {
     Node *head;
     Node *tail;
     size_t len;
-    // fn's pointers.
     Node *(*new_node)(void *);
     Node *(*find_node)(struct llist *, size_t);
     void *(*get)(struct llist *, size_t);
@@ -47,4 +42,4 @@ typedef struct llist {
 
 Llist *lst_init();
 
-#endif //EDA_DLIST_H
+#endif

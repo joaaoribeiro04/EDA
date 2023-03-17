@@ -1,10 +1,6 @@
-//
-// Created by jp on 15-03-2023.
-//
-
 #include "dlist.h"
 
-/// Initialize a new node.
+/// Inicia um novo Node.
 static inline Node *new_node(void *data) {
     Node *n = (Node *)malloc(sizeof(Node));
     n->data = data;
@@ -13,7 +9,7 @@ static inline Node *new_node(void *data) {
     return n;
 }
 
-/// Find a node and the best way to iterate over it.
+/// Encontrar um Node e a melhor maneira de iterar sobre ele
 static inline Node *find_node(Llist *l, size_t pos) {
     if (pos > l->len) {
         return NULL;
@@ -21,7 +17,7 @@ static inline Node *find_node(Llist *l, size_t pos) {
     Node *iter;
     size_t currPos;
     size_t reverse;
-    /// check the best to way to iterate, head or tail.
+    /// melhor maneira de iterar cabeça ou calda
     if (pos > ((l->len - 1) / 2)) {
         reverse = 1;
         currPos = l->len - 1;
@@ -41,23 +37,23 @@ static inline Node *find_node(Llist *l, size_t pos) {
     return iter;
 }
 
-/// Get and element(*ptr->data) in an arbitrary position.
+/// Obtenha um elemento (*ptr->data)
 static inline void *get(Llist *l, size_t pos) {
     Node *n = find_node(l, pos);
     return n == NULL ? n : n->data;
 }
 
-/// Get the head(*ptr->data) of the list.
+/// Obtenha a cabeça (*ptr->data) da lista
 static inline void *get_head(Llist *l) {
     return l->head == NULL ? NULL : l->head->data;
 }
 
-/// Get the tail(*ptr->data) of the list.
+/// Obtenha o final (*ptr->data) da lista
 static inline void *get_tail(Llist *l) {
     return l->head == NULL ? NULL : l->tail->data;
 }
 
-/// Add and element(*ptr->data) in an arbitrary position.
+/// Adiciona um elemento (*ptr->data)
 static inline int add(Llist *l, void *data, size_t pos) {
     if (pos > l->len) {
         return -1;
@@ -65,7 +61,7 @@ static inline int add(Llist *l, void *data, size_t pos) {
     Node *newNode;
     Node *iter;
     newNode = new_node(data);
-    /// Check if list is empty.
+    /// Verifica se a lista esta vazia
     if (l->len == 0) {
         l->head = newNode;
         l->tail = newNode;
@@ -83,7 +79,7 @@ static inline int add(Llist *l, void *data, size_t pos) {
         }
         iter->prev = newNode;
     } else {
-        /// Add at the end
+        /// Adicionar no final
         l->tail->next = newNode;
         newNode->prev = l->tail;
         l->tail = newNode;
@@ -92,7 +88,7 @@ static inline int add(Llist *l, void *data, size_t pos) {
     return 0;
 }
 
-/// Change and element(*ptr->data) in an arbitrary position.
+/// Mudança de um elemento (*ptr->data)
 static inline void *set(Llist *l, void *data, size_t pos) {
     Node *currNode = find_node(l, pos);
     if (currNode == NULL) {
@@ -104,15 +100,15 @@ static inline void *set(Llist *l, void *data, size_t pos) {
     return oldData;
 }
 
-/// Insert an element to the head.
+/// Inserir um elemento na cabeça
 static inline void push(Llist *l, void *data) {
     Node *newNode = new_node(data);
 
-    // if list is empty
+    /// se a lista estiver vazia
     if (l->len == 0) {
         l->tail = newNode;
     } else {
-        // if there is at least one element
+        /// se houver pelo menos um elemento
         l->head->prev = newNode;
         newNode->next = l->head;
     }
@@ -120,15 +116,15 @@ static inline void push(Llist *l, void *data) {
     l->len++;
 }
 
-/// Insert an element to the tail.
+/// Inserir um elemento na cauda
 static inline void push_t(Llist *l, void *data) {
     Node *newNode = new_node(data);
 
-    // if list is empty
+    /// se a lista estiver vazia
     if (l->len == 0) {
         l->head = newNode;
     } else {
-        // if there is at least one element
+        /// se houver pelo menos um elemento
         l->tail->next = newNode;
         newNode->prev = l->tail;
     }
@@ -136,7 +132,7 @@ static inline void push_t(Llist *l, void *data) {
     l->len++;
 }
 
-/// Remove and element in an arbitrary position.
+/// Remove um elemento
 static inline void *rm(Llist *l, size_t pos) {
     Node *currNode = find_node(l, pos);
     void *data = NULL;
@@ -161,7 +157,7 @@ static inline void *rm(Llist *l, size_t pos) {
     return data;
 }
 
-/// Remove a element (list->head);
+/// Remove um elemento (list->head);
 static inline void *pop(Llist *l) {
     if (!l) {
         return NULL;
@@ -177,7 +173,7 @@ static inline void *pop(Llist *l) {
     return data;
 }
 
-/// Remove a element (list->tail);
+/// Remove um elemento (list->tail);
 static inline void *pop_t(Llist *l) {
     Node *n = l->tail;
     if (n == NULL) {
@@ -190,8 +186,8 @@ static inline void *pop_t(Llist *l) {
     return data;
 }
 
-/// Iterates over the entire list from the beginning and
-/// calls the specified function with with each element.
+/// Itera sobre toda a lista desde o início e
+/// chama a função especificada com cada elemento.
 static inline void iter_fn(Llist *l, void (*f)(void *)) {
     Node *iter = l->head;
 
@@ -201,8 +197,8 @@ static inline void iter_fn(Llist *l, void (*f)(void *)) {
     }
 }
 
-/// Iterates over the entire list from the end and
-/// calls the specified function with with each element.
+/// Itera sobre toda a lista a partir do final e
+/// chama a função especificada com cada elemento.
 static inline void iter_t_fn(Llist *l, void (*f)(void *)) {
     Node *currNode = l->tail;
 
@@ -212,7 +208,7 @@ static inline void iter_t_fn(Llist *l, void (*f)(void *)) {
     }
 }
 
-/// Destroys the list and allocates a new one (empty).
+/// Destrói a lista e aloca uma nova
 static inline void reset(Llist *l) {
     Node *currNode = l->head;
     Node *nextNode;
@@ -227,8 +223,8 @@ static inline void reset(Llist *l) {
     l->len = 0;
 }
 
-/// Destroys a list and frees all list's related memory.
-/// Sometimes iter_fn may be better if additional frees are required.
+
+/// Destrói uma lista e liberta toda a memória relacionada à lista.
 static inline void destroy(Llist *l) {
     Node *currNode = l->head;
     Node *nextNode;
@@ -241,7 +237,7 @@ static inline void destroy(Llist *l) {
     free(l);
 }
 
-/// Initialize a new list, with all the info nedeed.
+/// Inicia uma nova lista com todas as informações necessarias
 Llist *lst_init() {
     Llist *l = (Llist *)malloc(sizeof(Llist));
     l->len = 0;

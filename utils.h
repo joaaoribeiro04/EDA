@@ -7,7 +7,4 @@
 void CleanStdin();
 
 
-
-
-
 #endif

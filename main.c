@@ -10,7 +10,7 @@
 #define C_AMAR "\033[93m"
 #define C_RESET "\033[0m"
 
-
+/// Função para dar print ao menu principal
 void print_main_menu() {
     printf("\nMain menu options:\n");
     printf(C_VERM "1. Veiculos eletricos\n" C_RESET);
@@ -20,11 +20,12 @@ void print_main_menu() {
     printf("Por favor, insira a sua escolha: ");
 }
 
+/// Função para dar print no menu de veiculos eletricos
 void print_electric_vehicle_menu() {
     printf(C_VERM "\nMenu de opções dos veiculos eletricos:\n");
     printf("1. Adicionar veiculo eletrico\n");
     printf("2. Mostra veiculo eletrico\n");
-    printf("3. Editar veiculo eletrico\n");
+    printf("3. Alterar dados de um veiculo eletrico\n");
     printf("4. Remover veiculo eletrico\n");
     printf("5. Armazenar os dados de veiculos eletricos em ficheiro de texto\n");
     printf("6. Armazenar os dados de veiculos eletricos em binario \n");
@@ -32,11 +33,12 @@ void print_electric_vehicle_menu() {
     printf("Por favor, insira a sua escolha: " C_RESET);
 }
 
+/// Função para dar print ao menu de cliente
 void print_client_menu() {
     printf(C_AMAR "\nMenu de opções dos clientes:\n");
     printf("1. Adicionar clientes\n");
     printf("2. Mostra clientes\n");
-    printf("3. Editar cliente\n");
+    printf("3. Alterar dados de um cliente\n");
     printf("4. Remover cliente\n");
     printf("5. Armazenar os dados de clientes em ficheiro de texto\n");
     printf("6. Armazenar os dados de clientes em binario \n");
@@ -44,11 +46,12 @@ void print_client_menu() {
     printf("Por favor, insira a sua escolha: " C_RESET);
 }
 
+/// Função para dar print ao menu de gestores
 void print_manager_menu() {
         printf(C_VERDE "\nMenu de opções dos gestores:\n");
         printf("1. Adicionar gestor\n");
         printf("2. Mostra gestores\n");
-        printf("3. Editar gestor\n");
+        printf("3. Alterar dados de um gestor\n");
         printf("4. Remover gestor\n");
         printf("5. Armazenar os dados de gestores em ficheiro de texto\n");
         printf("6. Armazenar os dados de gestores em binario \n");
@@ -58,7 +61,7 @@ void print_manager_menu() {
 
 int main() {
 
-    // Listas duplamente ligadas genericas
+    /// Listas duplamente ligadas genericas
     Llist *listagestor= lst_init();
     Llist *listaveiculos= lst_init();
     Llist *listacliete = lst_init();
@@ -84,27 +87,29 @@ int main() {
                         ev_choice = -1;
                     }
 
-                    // Call functions related to Electric Vehicles
+
                     switch (ev_choice) {
-                        // Add your code for each case to call the corresponding functions
-                        // and handle user inputs
+
                         case 1:
                             ReadElectricVehicleFromIo(listaveiculos);
                             break;
+
                         case 2:
                             ShowEletricVehicles(listaveiculos);
                             break;
+
                         case 3:
-                            // ler dados para alterar
-                            // altera()
+
                             break;
+
                         case 4:
-                            // ler id
-                            RmEletricVehicle(listaveiculos,1);
+
                             break;
+
                         case 5:
                             WriteToTextFile(listaveiculos, "Meios.txt");
                             break;
+
                         case 6:
                             write_to_binary_file(listaveiculos, "Meios.bin");
                             break;
@@ -127,25 +132,30 @@ int main() {
                         client_choice = -1;
                     }
 
-                    // Call functions related to Clients
+
                     switch (client_choice) {
-                        // Add your code for each case to call the corresponding functions
-                        // and handle user inputs
+
+
                         case 1:
                             ReadClient(listacliete);
                             break;
+
                         case 2:
                             ShowClient(listacliete);
                             break;
+
                         case 3:
-                            ///
+
                             break;
+
                         case 4:
-                            ///
+
                             break;
+
                         case 5:
                             WriteClientToTextFile(listacliete, "Clientes.txt");
                             break;
+
                         case 6:
                             write_to_binary_file_client(listacliete, "Clientes.bin");
                             break;
@@ -167,25 +177,30 @@ int main() {
                         manager_choice = -1;
                     }
 
-                    // Call functions related to Managers
+
                     switch (manager_choice) {
-                        // Add your code for each case to call the corresponding functions
-                        // and handle user inputs
+
+
                         case 1:
                             ReadManager(listagestor);
                             break;
+
                         case 2:
                             ShowManager(listagestor);
                             break;
+
                         case 3:
-                            ///
+
                             break;
+
                         case 4:
-                            ///
+
                             break;
+
                         case 5:
                             WriteManagerToTextFile(listagestor, "Gestor.txt");
                             break;
+
                         case 6:
                             write_to_binary_file_manager(listagestor, "Gestor.bin");
                             break;

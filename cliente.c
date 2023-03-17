@@ -9,16 +9,16 @@ void AllocClient(Llist *l, int id, int nif, char *name, char *address, float bal
 
     v->id = id;
     v->nif = nif;
-    v->name = (char*) malloc(strlen(name) + 1); // Allocate space for a new string
+    v->name = (char*) malloc(strlen(name) + 1); /// Alocar espaço para uma nova string
     if(v->name == NULL) {
-        free(v); // Clean up allocated memory
+        free(v); /// Limpa a memoria alocada
         printf("Failed to alloc");
         return;
     }
     strcpy(v->name, name);
-    v->address = (char*) malloc(strlen(address) + 1); // Allocate space for a new string
+    v->address = (char*) malloc(strlen(address) + 1); /// Alocar espaço para uma nova string
     if(v->address == NULL) {
-        free(v); // Clean up allocated memory
+        free(v); /// Limpa a memoria alocada
         printf("Failed to alloc");
         return;
     }
@@ -28,6 +28,7 @@ void AllocClient(Llist *l, int id, int nif, char *name, char *address, float bal
     l->push_t(l,v);
 }
 
+/// Função que altera os dados de um cliente
 void SetClient(Llist *l, int id , int new_nif, char *new_name, char *new_address, float new_balance) {
     Client *v = NULL;
     size_t pos = 0;
@@ -44,25 +45,26 @@ void SetClient(Llist *l, int id , int new_nif, char *new_name, char *new_address
     v->nif = new_nif;
     if (v->name)
         free(v->name);
-    v->name = (char*) malloc(strlen(new_name) + 1); // Allocate space for a new string
+    v->name = (char*) malloc(strlen(new_name) + 1); /// Alocar espaço para uma nova string
     if(v->name == NULL) {
-        free(v); // Clean up allocated memory
+        free(v); /// Limpa a memoria alocada
         printf("Failed to alloc");
         return;
     }
-    strcpy(v->name, new_name); // Copy the contents of type into the new string
+    strcpy(v->name, new_name); /// Copia o conteudo para uma nova string
     if (v->address)
         free(v->address);
-    v->address = (char*) malloc(strlen(new_address) + 1); // Allocate space for a new string
+    v->address = (char*) malloc(strlen(new_address) + 1); /// Alocar espaço para uma nova string
     if(v->address == NULL) {
-        free(v); // Clean up allocated memory
+        free(v);  /// Limpa a memoria alocada
         printf("Failed to alloc");
         return;
     }
-    strcpy(v->address, new_address); // Copy the contents of type into the new string
+    strcpy(v->address, new_address); /// Copia o conteudo para uma nova string
     v->balance = new_balance;
 }
 
+/// Função que remove um cliente
 void RmClient(Llist *l, int id ) {
     Client *v = NULL;
     size_t pos = 0;
@@ -80,7 +82,7 @@ void RmClient(Llist *l, int id ) {
     free(v);
 }
 
-
+/// Função que lista clientes
 void ShowClient(Llist* l) {
     for (size_t i = 0; i < l->len ; i++) {
         Client *v = l->get(l,i);
@@ -94,7 +96,7 @@ void ShowClient(Llist* l) {
     }
 }
 
-
+/// Função que insere novos clientes
 void ReadClient(Llist *l) {
     int id;
     int nif;
@@ -102,7 +104,7 @@ void ReadClient(Llist *l) {
     char address[100];
     float balance;
 
-    // Get input from user
+    /// Obter entrada do usuário
     printf("Enter client's ID: ");
     if(scanf("%d", &id) != 1) {
         printf("Invalid input for client's ID\n");
@@ -134,9 +136,10 @@ void ReadClient(Llist *l) {
         return;
     }
 
-    // Allocate new ElectricVehicle struct
+    // Aloca uma nova struct ElectricVehicle
     AllocClient(l, id, nif, name, address, balance);
 }
+/// Função que guarda os dados de um cliente em ficheiro de texto (.txt)
 void WriteClientToTextFile(Llist *l, const char *filename) {
     FILE *file = fopen(filename, "w");
     if (file == NULL) {
@@ -154,6 +157,7 @@ void WriteClientToTextFile(Llist *l, const char *filename) {
     fclose(file);
 }
 
+/// Função de leitura do ficheiro de texto
 void ReadClientFromTextFile(Llist *l, const char *filename) {
     FILE *file = fopen(filename, "r");
     if (file == NULL) {
@@ -182,6 +186,7 @@ void ReadClientFromTextFile(Llist *l, const char *filename) {
     fclose(file);
 }
 
+///Função que guarda os dados de um cliente em binário (.bin)
 void write_to_binary_file_client(Llist *l, const char *filename) {
     FILE *file = fopen(filename, "wb");
     if (file == NULL) {

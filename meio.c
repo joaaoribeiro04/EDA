@@ -6,13 +6,14 @@ void AllocEletricVehicle(Llist *l,int id, char *type, int battery_lvl, float cph
         return;
 
     v->id = id;
-    v->type = (char*) malloc(strlen(type) + 1); // Allocate space for a new string
+    v->type = (char*) malloc(strlen(type) + 1); /// Alocar espaço para uma nova string
     if(v->type == NULL) {
-        free(v); // Clean up allocated memory
+        free(v); /// Limpa a memoria alocada
         printf("Failed to alloc");
         return;
     }
-    strcpy(v->type, type); // Copy the contents of type into the new string
+    /// Copia o conteudo para uma nova string
+    strcpy(v->type, type);
     v->battery_level = battery_lvl;
     v->cost_per_hour = cph;
     v->autonomia = autonomia;
@@ -20,6 +21,7 @@ void AllocEletricVehicle(Llist *l,int id, char *type, int battery_lvl, float cph
     l->push_t(l,v);
 }
 
+/// Função que altera os dados de um veiculo eletrico
 void SetEletricVehicle(Llist *l, int id , char *new_type, int new_battery_lvl, float new_cph, int new_autonomia) {
     ElectricVehicle *v = NULL;
     size_t pos = 0;
@@ -35,18 +37,19 @@ void SetEletricVehicle(Llist *l, int id , char *new_type, int new_battery_lvl, f
 
     if (v->type)
         free(v->type);
-    v->type = (char*) malloc(strlen(new_type) + 1); // Allocate space for a new string
+    v->type = (char*) malloc(strlen(new_type) + 1); /// Alocar espaço para uma nova string
     if(v->type == NULL) {
-        free(v); // Clean up allocated memory
+        free(v); /// Limpa a memoria alocada
         printf("Failed to alloc");
         return;
     }
-    strcpy(v->type, new_type); // Copy the contents of type into the new string
+    strcpy(v->type, new_type); /// Copia o conteudo para uma nova string
     v->battery_level = new_battery_lvl;
     v->cost_per_hour = new_cph;
     v->autonomia = new_autonomia;
 }
 
+/// Função que remove um veiculo eletrico
 void RmEletricVehicle(Llist *l, int id ){
     ElectricVehicle *v = NULL;
     size_t pos = 0;
@@ -64,6 +67,7 @@ void RmEletricVehicle(Llist *l, int id ){
     free(v);
 }
 
+/// Função que lista veiculos eletricos
 void ShowEletricVehicles(Llist* l) {
     for (size_t i = 0; i < l->len ; i++) {
         ElectricVehicle *v = l->get(l,i);
@@ -77,6 +81,7 @@ void ShowEletricVehicles(Llist* l) {
     }
 }
 
+/// Função que insere novos veiculos eletricos
 void ReadElectricVehicleFromIo(Llist *l) {
     int id;
     char type[100];
@@ -84,7 +89,7 @@ void ReadElectricVehicleFromIo(Llist *l) {
     float cph;
     int autonomia;
 
-    // Get input from user
+    /// Obter entrada do usuário
     printf("Enter ID: ");
     if(scanf("%d", &id) != 1) {
         printf("Invalid input for ID\n");
@@ -117,10 +122,11 @@ void ReadElectricVehicleFromIo(Llist *l) {
     }
 
 
-    // Allocate new ElectricVehicle struct
+    // Aloca a nova struct ElectricVehicle
     AllocEletricVehicle(l, id, type, battery_lvl, cph, autonomia);
 }
 
+/// Função que guarda os dados de um veiculo eletrico em ficheiro de texto (.txt)
 void WriteToTextFile(Llist *l, const char *filename) {
     FILE *file = fopen(filename, "w");
     if (file == NULL) {
@@ -138,6 +144,7 @@ void WriteToTextFile(Llist *l, const char *filename) {
     fclose(file);
 }
 
+/// Função de leitura do ficheiro de texto
 void ReadFromTextFile(Llist *l, const char *filename) {
     FILE *file = fopen(filename, "r");
     if (file == NULL) {
@@ -164,6 +171,7 @@ void ReadFromTextFile(Llist *l, const char *filename) {
     fclose(file);
 }
 
+///Função que guarda os dados de um veiculo eletrico em binário (.bin)
 void write_to_binary_file(Llist *l, const char *filename) {
     FILE *file = fopen(filename, "wb");
     if (file == NULL) {
