@@ -32,8 +32,6 @@ int main() {
                         CleanStdin();
                         ev_choice = -1;
                     }
-
-
                     switch (ev_choice) {
 
                         case 1:
