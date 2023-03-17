@@ -1,6 +1,6 @@
 #include "meio.h"
 
-void AllocEletricVehicle(Llist *l,int id, char *type, int battery_lvl, float cph) {
+void AllocEletricVehicle(Llist *l,int id, char *type, int battery_lvl, float cph, int autonomia) {
     ElectricVehicle *v = (ElectricVehicle*) malloc(sizeof (ElectricVehicle));
     if(v == NULL)
         return;
@@ -15,11 +15,12 @@ void AllocEletricVehicle(Llist *l,int id, char *type, int battery_lvl, float cph
     strcpy(v->type, type); // Copy the contents of type into the new string
     v->battery_level = battery_lvl;
     v->cost_per_hour = cph;
+    v->autonomia = autonomia;
 
     l->push_t(l,v);
 }
 
-void SetEletricVehicle(Llist *l, int id , char *new_type, int new_battery_lvl, float new_cph) {
+void SetEletricVehicle(Llist *l, int id , char *new_type, int new_battery_lvl, float new_cph, int new_autonomia) {
     ElectricVehicle *v = NULL;
     size_t pos = 0;
     for (pos = 0; pos < l->len; pos++) {
@@ -43,6 +44,7 @@ void SetEletricVehicle(Llist *l, int id , char *new_type, int new_battery_lvl, f
     strcpy(v->type, new_type); // Copy the contents of type into the new string
     v->battery_level = new_battery_lvl;
     v->cost_per_hour = new_cph;
+    v->autonomia = new_autonomia;
 }
 
 void RmEletricVehicle(Llist *l, int id ){
@@ -71,6 +73,7 @@ void ShowEletricVehicles(Llist* l) {
         printf("Tipo de veiculo -> %s\n", v->type);
         printf("Bateria de veiculo -> %d\n", v->battery_level);
         printf("Custo por hora -> %f\n", v->cost_per_hour);
+        printf("Autonomia do veiculo\n", v->autonomia);
     }
 }
 
@@ -79,6 +82,7 @@ void ReadElectricVehicleFromIo(Llist *l) {
     char type[100];
     int battery_lvl;
     float cph;
+    int autonomia;
 
     // Get input from user
     printf("Enter ID: ");
@@ -105,10 +109,16 @@ void ReadElectricVehicleFromIo(Llist *l) {
         CleanStdin();
         return;
     }
+    printf("Enter autonomy: ");
+    if(scanf("%d", &autonomia) != 1) {
+        printf("Invalid input for autonomy\n");
+        CleanStdin();
+        return;
+    }
 
 
     // Allocate new ElectricVehicle struct
-    AllocEletricVehicle(l, id, type, battery_lvl, cph);
+    AllocEletricVehicle(l, id, type, battery_lvl, cph, autonomia);
 }
 
 void WriteToTextFile(Llist *l, const char *filename) {
@@ -122,7 +132,7 @@ void WriteToTextFile(Llist *l, const char *filename) {
         ElectricVehicle *v = l->get(l, i);
         if (v == NULL)
             continue;
-        fprintf(file, "%d %s %d %f\n", v->id, v->type, v->battery_level, v->cost_per_hour);
+        fprintf(file, "%d %s %d %f %d\n", v->id, v->type, v->battery_level, v->cost_per_hour, v->autonomia);
     }
 
     fclose(file);
@@ -138,14 +148,16 @@ void ReadFromTextFile(Llist *l, const char *filename) {
     char type[100];
     int id, battery_lvl;
     float cph;
+    int autonomia;
 
-    while (fscanf(file, "%d %99s %d %f", &id, type, &battery_lvl, &cph) == 4) {
+    while (fscanf(file, "%d %99s %d %f %d", &id, type, &battery_lvl, &cph, &autonomia) == 5) {
         ElectricVehicle *v = (ElectricVehicle*) malloc(sizeof(ElectricVehicle));
         v->id = id;
         v->type = (char*) malloc(strlen(type) + 1);
         strcpy(v->type, type);
         v->battery_level = battery_lvl;
         v->cost_per_hour = cph;
+        v->autonomia = autonomia;
         l->push_t(l, v);
     }
 
@@ -167,6 +179,7 @@ void write_to_binary_file(Llist *l, const char *filename) {
         fwrite(v->type, sizeof(char), strlen(v->type) + 1, file);
         fwrite(&v->battery_level, sizeof(int), 1, file);
         fwrite(&v->cost_per_hour, sizeof(float), 1, file);
+        fwrite(&v->autonomia, sizeof(int), 1, file);
     }
     fclose(file);
 }

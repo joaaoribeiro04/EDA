@@ -103,10 +103,10 @@ int main() {
                             RmEletricVehicle(listaveiculos,1);
                             break;
                         case 5:
-                            WriteToTextFile(listaveiculos, "Meio.txt");
+                            WriteToTextFile(listaveiculos, "Meios.txt");
                             break;
                         case 6:
-                            write_to_binary_file(listaveiculos, "Meio.bin");
+                            write_to_binary_file(listaveiculos, "Meios.bin");
                             break;
                         case 0:
                             break;
