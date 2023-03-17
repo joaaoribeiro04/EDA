@@ -1,0 +1,78 @@
+\hypertarget{structllist}{}\doxysection{llist Struct Reference}
+\label{structllist}\index{llist@{llist}}
+
+
+{\ttfamily \#include $<$dlist.\+h$>$}
+
+
+
+Collaboration diagram for llist\+:
+% FIG 0
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structllist_a254cbf996fcdd4f604352d43a72916f4}\label{structllist_a254cbf996fcdd4f604352d43a72916f4}} 
+\mbox{\hyperlink{structnode}{Node}} $\ast$ {\bfseries head}
+\item 
+\mbox{\Hypertarget{structllist_aade23576dacfe716c4621e7dbc93508a}\label{structllist_aade23576dacfe716c4621e7dbc93508a}} 
+\mbox{\hyperlink{structnode}{Node}} $\ast$ {\bfseries tail}
+\item 
+\mbox{\Hypertarget{structllist_a54bce432e8be20a5df4499ccf475aeca}\label{structllist_a54bce432e8be20a5df4499ccf475aeca}} 
+size\+\_\+t {\bfseries len}
+\item 
+\mbox{\Hypertarget{structllist_a1ebbba56946247e34bee5678585cb486}\label{structllist_a1ebbba56946247e34bee5678585cb486}} 
+\mbox{\hyperlink{structnode}{Node}} $\ast$($\ast$ {\bfseries new\+\_\+node} )(void $\ast$)
+\item 
+\mbox{\Hypertarget{structllist_a6fac9f56ec541ce68ca00109b739d37e}\label{structllist_a6fac9f56ec541ce68ca00109b739d37e}} 
+\mbox{\hyperlink{structnode}{Node}} $\ast$($\ast$ {\bfseries find\+\_\+node} )(struct \mbox{\hyperlink{structllist}{llist}} $\ast$, size\+\_\+t)
+\item 
+\mbox{\Hypertarget{structllist_a7d994b2afe93a9e4ef8fee9cc9a50f50}\label{structllist_a7d994b2afe93a9e4ef8fee9cc9a50f50}} 
+void $\ast$($\ast$ {\bfseries get} )(struct \mbox{\hyperlink{structllist}{llist}} $\ast$, size\+\_\+t)
+\item 
+\mbox{\Hypertarget{structllist_ae69160cbfd08d7b00d68b85dea96f3af}\label{structllist_ae69160cbfd08d7b00d68b85dea96f3af}} 
+void $\ast$($\ast$ {\bfseries get\+\_\+head} )(struct \mbox{\hyperlink{structllist}{llist}} $\ast$)
+\item 
+\mbox{\Hypertarget{structllist_a2a7deef6b76133a53a02588024c06272}\label{structllist_a2a7deef6b76133a53a02588024c06272}} 
+void $\ast$($\ast$ {\bfseries get\+\_\+tail} )(struct \mbox{\hyperlink{structllist}{llist}} $\ast$)
+\item 
+\mbox{\Hypertarget{structllist_a22b92a02322a27b91228cfba79bf2568}\label{structllist_a22b92a02322a27b91228cfba79bf2568}} 
+int($\ast$ {\bfseries add} )(struct \mbox{\hyperlink{structllist}{llist}} $\ast$, void $\ast$, size\+\_\+t)
+\item 
+\mbox{\Hypertarget{structllist_a8c52a8e35382aa956108451fbced01bc}\label{structllist_a8c52a8e35382aa956108451fbced01bc}} 
+void $\ast$($\ast$ {\bfseries rm} )(struct \mbox{\hyperlink{structllist}{llist}} $\ast$, size\+\_\+t)
+\item 
+\mbox{\Hypertarget{structllist_a4248661474ec5a40026017facfa4ebae}\label{structllist_a4248661474ec5a40026017facfa4ebae}} 
+void $\ast$($\ast$ {\bfseries set} )(struct \mbox{\hyperlink{structllist}{llist}} $\ast$, void $\ast$, size\+\_\+t)
+\item 
+\mbox{\Hypertarget{structllist_a4181cad8b7fae16fa95c79aa86af3f22}\label{structllist_a4181cad8b7fae16fa95c79aa86af3f22}} 
+void($\ast$ {\bfseries push} )(struct \mbox{\hyperlink{structllist}{llist}} $\ast$, void $\ast$)
+\item 
+\mbox{\Hypertarget{structllist_a094ea8227590e777b0afc83612e8173b}\label{structllist_a094ea8227590e777b0afc83612e8173b}} 
+void($\ast$ {\bfseries push\+\_\+t} )(struct \mbox{\hyperlink{structllist}{llist}} $\ast$, void $\ast$)
+\item 
+\mbox{\Hypertarget{structllist_a221f97d5eaed7c4aed0b1fa640e8c04c}\label{structllist_a221f97d5eaed7c4aed0b1fa640e8c04c}} 
+void $\ast$($\ast$ {\bfseries pop} )(struct \mbox{\hyperlink{structllist}{llist}} $\ast$)
+\item 
+\mbox{\Hypertarget{structllist_a38243dad5a7f57eb0cb8d723b8d640cd}\label{structllist_a38243dad5a7f57eb0cb8d723b8d640cd}} 
+void $\ast$($\ast$ {\bfseries pop\+\_\+t} )(struct \mbox{\hyperlink{structllist}{llist}} $\ast$)
+\item 
+\mbox{\Hypertarget{structllist_a389f7169ac07e85ea739bf0826ca09af}\label{structllist_a389f7169ac07e85ea739bf0826ca09af}} 
+void($\ast$ {\bfseries iter\+\_\+fn} )(struct \mbox{\hyperlink{structllist}{llist}} $\ast$, void($\ast$fn)(void $\ast$))
+\item 
+\mbox{\Hypertarget{structllist_a4a8dd807635d4002b47391bd51e77ee9}\label{structllist_a4a8dd807635d4002b47391bd51e77ee9}} 
+void($\ast$ {\bfseries iter\+\_\+t\+\_\+fn} )(struct \mbox{\hyperlink{structllist}{llist}} $\ast$, void($\ast$fn)(void $\ast$))
+\item 
+\mbox{\Hypertarget{structllist_a3a8a65f035544d4b36581a13547a6ef9}\label{structllist_a3a8a65f035544d4b36581a13547a6ef9}} 
+void($\ast$ {\bfseries reset} )(struct \mbox{\hyperlink{structllist}{llist}} $\ast$)
+\item 
+\mbox{\Hypertarget{structllist_a9c91dd1521049435b4613b03f56d4639}\label{structllist_a9c91dd1521049435b4613b03f56d4639}} 
+void($\ast$ {\bfseries destroy} )(struct \mbox{\hyperlink{structllist}{llist}} $\ast$)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\char`\"{}métodos\char`\"{} e informações relevantes de uma lista devem estar aqui, as funções são estáticas e embutidas, então isso é crítico para o seu uso fora os respectivos arquivos. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+dlist.\+h\end{DoxyCompactItemize}
