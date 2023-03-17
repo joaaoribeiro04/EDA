@@ -7,30 +7,29 @@
 
 int main() {
 
-    Llist *listaclientes = lst_init();
 
-    if (listaclientes == NULL)
+    Llist *listagestor= lst_init();
+
+   if (listagestor == NULL)
         return 1;
 
     for (int i = 0; i < 2; i++){
-       ReadClient(listaclientes);
+       ReadManager(listagestor);
     }
-    ShowClient(listaclientes);
+    ShowManager(listagestor);
 
-    WriteClientToTextFile(listaclientes,"Clientes.txt");
+    SetManager(listagestor, 20, "joao", "lalalala");
 
+    ShowManager(listagestor);
 
-    SetClient(listaclientes, 20, 11111, "joao", "igreja nº13", 124);
-
-    ShowClient(listaclientes);
-
-    RmClient(listaclientes, 21);
+    RmManager(listagestor, 21);
 
     puts(""
     );
     puts("");
 
-    ShowClient(listaclientes);
+    ShowManager(listagestor);
 
+    WriteManagerToTextFile(listagestor,"Gestor.txt");
 
 }

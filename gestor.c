@@ -112,7 +112,7 @@ void ReadManager(Llist *l) {
         return;
     }
 
-    // Allocate new ElectricVehicle struct
+    // Allocate new Manager struct
     AllocManager(l, id, username, password);
 }
 void WriteManagerToTextFile(Llist *l, const char *filename) {
