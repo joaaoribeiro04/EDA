@@ -45,7 +45,7 @@ void SetManager(Llist *l, int id , char *new_username, char *new_password) {
         printf("Failed to alloc");
         return;
     }
-    strcpy(v->password, new_password); // Copy the contents of type into the new string
+    strcpy(v->username, new_username); // Copy the contents of type into the new string
     if (v->password)
         free(v->password);
     v->password = (char*) malloc(strlen(new_password) + 1); // Allocate space for a new string
@@ -115,6 +115,7 @@ void ReadManager(Llist *l) {
     // Allocate new Manager struct
     AllocManager(l, id, username, password);
 }
+
 void WriteManagerToTextFile(Llist *l, const char *filename) {
     FILE *file = fopen(filename, "w");
     if (file == NULL) {

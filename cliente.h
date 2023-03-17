@@ -12,7 +12,6 @@ typedef struct client {
     char *name;
     char *address;
     float balance;
-    struct client* next;
 } Client;
 
 void AllocClient(Llist *l, int id, int nif, char *name, char *address, float balance);

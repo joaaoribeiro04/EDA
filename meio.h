@@ -15,7 +15,6 @@ typedef struct electric_vehicle {
     char *type;
     int battery_level;
     float cost_per_hour;
-    struct electric_vehicle* next;
 } ElectricVehicle;
 
 void AllocEletricVehicle(Llist *l,int id, char *type, int battery_lvl, float cph);

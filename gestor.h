@@ -9,7 +9,6 @@ typedef struct gestor {
     int id;
     char *username;
     char *password;
-    struct gestor* next;
 } Gestor;
 
 void AllocManager(Llist *l, int id, char *username, char *password);
