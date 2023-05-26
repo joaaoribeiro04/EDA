@@ -6,7 +6,8 @@
 #include "utils.h"
 #include "menu.h"
 
-int main() {
+
+/*int main() {
     /// Listas duplamente ligadas genericas
     Llist *listagestor= lst_init();
     Llist *listaveiculos= lst_init();
@@ -166,5 +167,48 @@ int main() {
 
 
     return 0;
+}*/
+
+
+#include <stdio.h>
+#include "grafo.h"
+
+int main() {
+    Graph* graph = createGraph();
+
+    // Adicionar vértices com intervalos de latitude e longitude
+    addVertex(graph, 10.0, 20.0, 20.0, 30.0);
+    addVertex(graph, 30.0, 40.0, 40.0, 50.0);
+    addVertex(graph, 50.0, 60.0, 60.0, 70.0);
+    addVertex(graph, 70.0, 80.0, 80.0, 90.0);
+    addVertex(graph, 90.0, 100.0, 100.0, 110.0);
+    addVertex(graph, 110.0, 120.0, 120.0, 130.0);
+
+    // Adicionar arestas
+    addEdge(graph, 0, 1);
+    addEdge(graph, 0, 2);
+    addEdge(graph, 1, 2);
+    addEdge(graph, 2, 3);
+    addEdge(graph, 3, 4);
+
+    // Encontrar vértice com base no intervalo de latitude e longitude
+    double latitude = 110.0;
+    double longitude = 120.0;
+    int vertexIndex = findVertex(graph, latitude, longitude);
+
+    if (vertexIndex != -1) {
+        printf("Encontra-se no vértice %d do grafo.\n", vertexIndex);
+    } else {
+        printf("Não foi encontrado em nenhum vértice do grafo.\n");
+    }
+
+    freeGraph(graph);
+
+    return 0;
 }
+
+
+
+
+
 

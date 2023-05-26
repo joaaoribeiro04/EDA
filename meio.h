@@ -6,9 +6,10 @@
 #include "utils.h"
 #include "string.h"
 
-typedef struct coordinates {
-    float lon, lat;
-}Coordinates;
+typedef struct {
+    double latitude;
+    double longitude;
+} Coords;
 
 typedef struct electric_vehicle {
     int id;
@@ -28,5 +29,6 @@ void SetEletricVehicle(Llist *l, int id , char *new_type, int new_battery_lvl, f
 void SetAndReadEletricVehicle(Llist *l);
 void RmEletricVehicle(Llist *l, int id );
 void RmEletricVehicleAndReadId(Llist *l );
+
 
 #endif
