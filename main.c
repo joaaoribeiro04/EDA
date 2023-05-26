@@ -1,4 +1,4 @@
-#include "meio.h"
+/*#include "meio.h"
 #include "stdio.h"
 #include "cliente.h"
 #include "gestor.h"
@@ -167,10 +167,9 @@ int main() {
 
 
     return 0;
-}
+}*/
 
 
-/*
 #include <stdio.h>
 #include "grafo.h"
 
@@ -178,6 +177,7 @@ int main() {
     Graph* graph = createGraph();
 
     // Adicionar vértices com intervalos de latitude e longitude
+    addVertex(graph, 1.0, 9.0, 1.0, 19.0);
     addVertex(graph, 10.0, 20.0, 20.0, 30.0);
     addVertex(graph, 30.0, 40.0, 40.0, 50.0);
     addVertex(graph, 50.0, 60.0, 60.0, 70.0);
@@ -190,10 +190,11 @@ int main() {
     addEdge(graph, 1, 2);
     addEdge(graph, 2, 3);
     addEdge(graph, 3, 4);
+    addEdge(graph, 4, 5);
 
     // Encontrar vértice com base no intervalo de latitude e longitude
-    double latitude = 30.0;
-    double longitude = 40.0;
+    double latitude = 10.0;
+    double longitude = 28.0;
     int vertexIndex = findVertex(graph, latitude, longitude);
 
     if (vertexIndex != -1) {
@@ -206,7 +207,6 @@ int main() {
 
     return 0;
 }
-*/
 
 
 
