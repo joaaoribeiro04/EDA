@@ -1,6 +1,6 @@
 #include "meio.h"
 
-void AllocEletricVehicle(Llist *l,int id, char *type, int battery_lvl, float cph, int autonomia) {
+void AllocEletricVehicle(Llist *l,int id, char *type, int battery_lvl, float cph, int autonomia, double latitude, double longitude) {
     ElectricVehicle *v = (ElectricVehicle*) malloc(sizeof (ElectricVehicle));
     if(v == NULL)
         return;
@@ -17,12 +17,14 @@ void AllocEletricVehicle(Llist *l,int id, char *type, int battery_lvl, float cph
     v->battery_level = battery_lvl;
     v->cost_per_hour = cph;
     v->autonomia = autonomia;
+    v->coordenadas.latitude = latitude;
+    v->coordenadas.longitude = longitude;
 
     l->push_t(l,v);
 }
 
 /// Função que altera os dados de um veiculo eletrico
-void SetEletricVehicle(Llist *l, int id , char *new_type, int new_battery_lvl, float new_cph, int new_autonomia) {
+void SetEletricVehicle(Llist *l, int id , char *new_type, int new_battery_lvl, float new_cph, int new_autonomia, double new_latitude, double new_longitude) {
     ElectricVehicle *v = NULL;
     size_t pos = 0;
     for (pos = 0; pos < l->len; pos++) {
@@ -47,6 +49,8 @@ void SetEletricVehicle(Llist *l, int id , char *new_type, int new_battery_lvl, f
     v->battery_level = new_battery_lvl;
     v->cost_per_hour = new_cph;
     v->autonomia = new_autonomia;
+    v->coordenadas.latitude = new_latitude;
+    v->coordenadas.longitude = new_longitude;
 }
 
 /// Função que altera os dados de um veiculo eletrico
@@ -56,6 +60,8 @@ void SetAndReadEletricVehicle(Llist *l) {
     int battery_lvl;
     float cph;
     int autonomia;
+    double latitude;
+    double longitude;
 
     /// Obter entrada do usuário
     printf("Enter ID: ");
@@ -88,7 +94,19 @@ void SetAndReadEletricVehicle(Llist *l) {
         CleanStdin();
         return;
     }
-    SetEletricVehicle(l, id, type, battery_lvl, cph,autonomia);
+    printf("Enter latitude: ");
+    if(scanf("%lf", &latitude) != 1) {
+        printf("Invalid input for latitude\n");
+        CleanStdin();
+        return;
+    }
+    printf("Enter longitude: ");
+    if(scanf("%lf", &longitude) != 1) {
+        printf("Invalid input for longitude\n");
+        CleanStdin();
+        return;
+    }
+    SetEletricVehicle(l, id, type, battery_lvl, cph, autonomia, latitude, longitude);
 }
 
 /// Função que remove um veiculo eletrico
@@ -108,7 +126,7 @@ void RmEletricVehicle(Llist *l, int id ){
     l->rm(l,pos);
     free(v);
 }
-/// Função que remove um veiculo eletrico e le o id do teclado
+/// Função que remove um veiculo eletrico e lê o id do teclado
 void RmEletricVehicleAndReadId(Llist *l ){
     int id;
 
@@ -133,7 +151,9 @@ void ShowEletricVehicles(Llist* l) {
         printf("Tipo de veiculo -> %s\n", v->type);
         printf("Bateria de veiculo -> %d\n", v->battery_level);
         printf("Custo por hora -> %f\n", v->cost_per_hour);
-        printf("Autonomia do veiculo\n", v->autonomia);
+        printf("Autonomia do veiculo -> %d\n", v->autonomia);
+        printf("Latitude do veiculo -> %lf\n", v-> coordenadas.latitude);
+        printf("Longitude do veiculo -> %lf\n", v->coordenadas.longitude);
     }
 }
 
@@ -144,6 +164,8 @@ void ReadElectricVehicleFromIo(Llist *l) {
     int battery_lvl;
     float cph;
     int autonomia;
+    double latitude;
+    double longitude;
 
     /// Obter entrada do usuário
     printf("Enter ID: ");
@@ -176,10 +198,22 @@ void ReadElectricVehicleFromIo(Llist *l) {
         CleanStdin();
         return;
     }
+    printf("Enter latitude: ");
+    if(scanf("%lf", &latitude) != 1) {
+        printf("Invalid input for latitude\n");
+        CleanStdin();
+        return;
+    }
+    printf("Enter longitude: ");
+    if(scanf("%lf", &longitude) != 1) {
+        printf("Invalid input for longitude\n");
+        CleanStdin();
+        return;
+    }
 
 
     // Aloca a nova struct ElectricVehicle
-    AllocEletricVehicle(l, id, type, battery_lvl, cph, autonomia);
+    AllocEletricVehicle(l, id, type, battery_lvl, cph, autonomia, latitude, longitude);
 }
 
 /// Função que guarda os dados de um veiculo eletrico em ficheiro de texto (.txt)
@@ -194,7 +228,7 @@ void WriteToTextFile(Llist *l, const char *filename) {
         ElectricVehicle *v = l->get(l, i);
         if (v == NULL)
             continue;
-        fprintf(file, "%d %s %d %f %d\n", v->id, v->type, v->battery_level, v->cost_per_hour, v->autonomia);
+        fprintf(file, "%d %s %d %f %d %lf %lf\n", v->id, v->type, v->battery_level, v->cost_per_hour, v->autonomia, v->coordenadas.latitude, v->coordenadas.longitude);
     }
 
     fclose(file);
@@ -212,8 +246,10 @@ void ReadFromTextFile(Llist *l, const char *filename) {
     int id, battery_lvl;
     float cph;
     int autonomia;
+    double latitude;
+    double longitude;
 
-    while (fscanf(file, "%d %99s %d %f %d", &id, type, &battery_lvl, &cph, &autonomia) == 5) {
+    while (fscanf(file, "%d %99s %d %f %d %lf %lf", &id, type, &battery_lvl, &cph, &autonomia, &latitude, &longitude) == 7) {
         ElectricVehicle *v = (ElectricVehicle*) malloc(sizeof(ElectricVehicle));
         v->id = id;
         v->type = (char*) malloc(strlen(type) + 1);
@@ -221,6 +257,8 @@ void ReadFromTextFile(Llist *l, const char *filename) {
         v->battery_level = battery_lvl;
         v->cost_per_hour = cph;
         v->autonomia = autonomia;
+        v->coordenadas.latitude = latitude;
+        v->coordenadas.longitude = longitude;
         l->push_t(l, v);
     }
 
@@ -244,6 +282,8 @@ void write_to_binary_file(Llist *l, const char *filename) {
         fwrite(&v->battery_level, sizeof(int), 1, file);
         fwrite(&v->cost_per_hour, sizeof(float), 1, file);
         fwrite(&v->autonomia, sizeof(int), 1, file);
+        fwrite(&v->coordenadas.latitude, sizeof(double), 1, file);
+        fwrite(&v->coordenadas.longitude, sizeof(double), 1, file);
     }
     fclose(file);
 }

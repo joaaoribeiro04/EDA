@@ -7,7 +7,7 @@
 #include "menu.h"
 
 
-/*int main() {
+int main() {
     /// Listas duplamente ligadas genericas
     Llist *listagestor= lst_init();
     Llist *listaveiculos= lst_init();
@@ -167,9 +167,10 @@
 
 
     return 0;
-}*/
+}
 
 
+/*
 #include <stdio.h>
 #include "grafo.h"
 
@@ -182,7 +183,6 @@ int main() {
     addVertex(graph, 50.0, 60.0, 60.0, 70.0);
     addVertex(graph, 70.0, 80.0, 80.0, 90.0);
     addVertex(graph, 90.0, 100.0, 100.0, 110.0);
-    addVertex(graph, 110.0, 120.0, 120.0, 130.0);
 
     // Adicionar arestas
     addEdge(graph, 0, 1);
@@ -192,8 +192,8 @@ int main() {
     addEdge(graph, 3, 4);
 
     // Encontrar vértice com base no intervalo de latitude e longitude
-    double latitude = 110.0;
-    double longitude = 120.0;
+    double latitude = 30.0;
+    double longitude = 40.0;
     int vertexIndex = findVertex(graph, latitude, longitude);
 
     if (vertexIndex != -1) {
@@ -206,6 +206,7 @@ int main() {
 
     return 0;
 }
+*/
 
 
 
