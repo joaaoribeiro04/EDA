@@ -1,6 +1,6 @@
 #include "cliente.h"
 
-void AllocClient(Llist *l, int id, int nif, char *name, char *address, float balance) {
+void AllocClient(Llist *l, int id, int nif, char *name, char *address, float balance, double latitude, double longitude) {
     Client *v = (Client*) malloc(sizeof (Client));
     if(v == NULL)
         return;
@@ -22,12 +22,14 @@ void AllocClient(Llist *l, int id, int nif, char *name, char *address, float bal
     }
     strcpy(v->address, address);
     v->balance = balance;
+    v->coordenadas.latitude = latitude;
+    v->coordenadas.longitude = longitude;
 
     l->push_t(l,v);
 }
 
 /// Função que altera os dados de um cliente
-void SetClient(Llist *l, int id , int new_nif, char *new_name, char *new_address, float new_balance) {
+void SetClient(Llist *l, int id , int new_nif, char *new_name, char *new_address, float new_balance, double new_latitude, double new_longitude) {
     Client *v = NULL;
     size_t pos = 0;
     for (pos = 0; pos < l->len; pos++) {
@@ -60,6 +62,8 @@ void SetClient(Llist *l, int id , int new_nif, char *new_name, char *new_address
     }
     strcpy(v->address, new_address); /// Copia o conteudo para uma nova string
     v->balance = new_balance;
+    v->coordenadas.latitude = new_latitude;
+    v->coordenadas.longitude = new_longitude;
 }
 
 void SetAndReadClient(Llist *l) {
@@ -68,6 +72,8 @@ void SetAndReadClient(Llist *l) {
     char *name;
     char *address;
     float balance;
+    double latitude;
+    double longitude;
 
 
     /// Obter entrada do usuário
@@ -101,7 +107,19 @@ void SetAndReadClient(Llist *l) {
         CleanStdin();
         return;
     }
-    SetClient(l, id, nif, name, address, balance);
+    printf("Enter client's latitude: ");
+    if(scanf("%lf", &latitude) != 1) {
+        printf("Invalid input for client's latitude\n");
+        CleanStdin();
+        return;
+    }
+    printf("Enter client's longitude: ");
+    if(scanf("%lf", &longitude) != 1) {
+        printf("Invalid input for client's longitude\n");
+        CleanStdin();
+        return;
+    }
+    SetClient(l, id, nif, name, address, balance, latitude, longitude);
 }
 /// Função que remove um cliente
 void RmClient(Llist *l, int id ) {
@@ -146,6 +164,8 @@ void ShowClient(Llist* l) {
         printf("Nome do cliente -> %s\n", v->name);
         printf("Morada do cliente -> %s\n", v->address);
         printf("Saldo do cliente -> %f\n", v->balance);
+        printf("Latitude do cliente -> %lf\n", v->coordenadas.latitude);
+        printf("Longitude do cliente -> %lf\n", v->coordenadas.longitude);
     }
 }
 
@@ -156,6 +176,8 @@ void ReadClient(Llist *l) {
     char name[100];
     char address[100];
     float balance;
+    double latitude;
+    double longitude;
 
     /// Obter entrada do usuário
     printf("Enter client's ID: ");
@@ -188,9 +210,21 @@ void ReadClient(Llist *l) {
         CleanStdin();
         return;
     }
+    printf("Enter client's latitude: ");
+    if(scanf("%lf", &latitude) != 1) {
+        printf("Invalid input for client's latitude\n");
+        CleanStdin();
+        return;
+    }
+    printf("Enter client's longitude: ");
+    if(scanf("%lf", &longitude) != 1) {
+        printf("Invalid input for client's longitude\n");
+        CleanStdin();
+        return;
+    }
 
     // Aloca uma nova struct ElectricVehicle
-    AllocClient(l, id, nif, name, address, balance);
+    AllocClient(l, id, nif, name, address, balance, latitude, longitude);
 }
 /// Função que guarda os dados de um cliente em ficheiro de texto (.txt)
 void WriteClientToTextFile(Llist *l, const char *filename) {
@@ -204,7 +238,7 @@ void WriteClientToTextFile(Llist *l, const char *filename) {
         Client *v = l->get(l, i);
         if (v == NULL)
             continue;
-        fprintf(file, "%d %d %s %s %f\n", v-> id, v->nif, v->name, v->address, v->balance);
+        fprintf(file, "%d %d %s %s %f %lf %lf\n", v-> id, v->nif, v->name, v->address, v->balance, v->coordenadas.latitude, v->coordenadas.longitude);
     }
 
     fclose(file);
@@ -222,9 +256,11 @@ void ReadClientFromTextFile(Llist *l, const char *filename) {
     char name[100];
     char address[100];
     float balance;
+    double latitude;
+    double longitude;
 
 
-    while (fscanf(file, "%d %d %s %s %f", &id, &nif, name, address, &balance) == 4) {
+    while (fscanf(file, "%d %d %s %s %f %lf %lf", &id, &nif, name, address, &balance, &latitude, &longitude) == 7) {
         Client *v = (Client *) malloc(sizeof(Client));
         v->id = id;
         v->nif = nif;
@@ -233,6 +269,10 @@ void ReadClientFromTextFile(Llist *l, const char *filename) {
         v->address = (char*) malloc(strlen(address) + 1);
         strcpy(v->address, address);
         v->balance = balance;
+        v->coordenadas.latitude = latitude;
+        v->coordenadas.longitude = longitude;
+
+
         l->push_t(l, v);
     }
 
@@ -256,6 +296,8 @@ void write_to_binary_file_client(Llist *l, const char *filename) {
         fwrite(v->name, sizeof(char), strlen(v->name) + 1, file);
         fwrite(v->address, sizeof(char), strlen(v->address) + 1, file);
         fwrite(&v->balance, sizeof(float), 1, file);
+        fwrite(&v->coordenadas.latitude, sizeof(double), 1, file);
+        fwrite(&v->coordenadas.longitude, sizeof(double ), 1, file);
     }
     fclose(file);
 }

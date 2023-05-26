@@ -259,8 +259,6 @@ CMakeFiles/EDA.dir/grafo.c.o: /home/jp/Documents/EDA/grafo.c \
   /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
   /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
   /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
-  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
-  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
   /home/jp/Documents/EDA/grafo.h \
   /home/jp/Documents/EDA/meio.h \
   /home/jp/Documents/EDA/dlist.h \
@@ -453,8 +451,6 @@ CMakeFiles/EDA.dir/utils.c.o: /home/jp/Documents/EDA/utils.c \
 
 /home/jp/Documents/EDA/main.c:
 
-/usr/include/x86_64-linux-gnu/bits/iscanonical.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
 
 /usr/include/x86_64-linux-gnu/bits/floatn-common.h:
@@ -476,8 +472,6 @@ CMakeFiles/EDA.dir/utils.c.o: /home/jp/Documents/EDA/utils.c \
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
-
-/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
 

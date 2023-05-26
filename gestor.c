@@ -189,7 +189,7 @@ void ReadManagerFromTextFile(Llist *l, const char *filename) {
     char password[100];
 
 
-    while (fscanf(file, "%d %s %s",&id, username, password) == 2) {
+    while (fscanf(file, "%d %s %s",&id, username, password) == 3) {
         Gestor *v = (Gestor *) malloc(sizeof(Gestor));
         v->id = id;
         v->username = (char*) malloc(strlen(username) + 1);

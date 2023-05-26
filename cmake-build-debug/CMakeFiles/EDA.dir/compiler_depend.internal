@@ -263,8 +263,6 @@ CMakeFiles/EDA.dir/grafo.c.o
  /usr/include/x86_64-linux-gnu/bits/fp-fast.h
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h
- /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h
- /usr/include/x86_64-linux-gnu/bits/iscanonical.h
  /home/jp/Documents/EDA/grafo.h
  /home/jp/Documents/EDA/meio.h
  /home/jp/Documents/EDA/dlist.h
