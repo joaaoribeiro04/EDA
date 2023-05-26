@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/EDA.dir/main.c.o CMakeFiles/EDA.dir/meio.c.o CMakeFiles/EDA.dir/gestor.c.o CMakeFiles/EDA.dir/dlist.c.o CMakeFiles/EDA.dir/cliente.c.o CMakeFiles/EDA.dir/utils.c.o CMakeFiles/EDA.dir/grafo.c.o -o EDA  -lm 
