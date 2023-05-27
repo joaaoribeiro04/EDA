@@ -1,5 +1,20 @@
 #include "meio.h"
 
+ElectricVehicle* GetVehicle (Llist *l, int id) {
+ElectricVehicle *v = NULL;
+size_t pos = 0;
+for (pos = 0; pos < l->len; pos++) {
+v = l->get(l,pos);
+if (v->id == id)
+    return v;
+if(pos == l->len -1)
+return NULL;
+}
+if(v == NULL)
+return NULL;
+}
+
+
 void AllocEletricVehicle(Llist *l,int id, char *type, int battery_lvl, float cph, int autonomia, double latitude, double longitude) {
     ElectricVehicle *v = (ElectricVehicle*) malloc(sizeof (ElectricVehicle));
     if(v == NULL)
@@ -158,7 +173,7 @@ void ShowEletricVehicles(Llist* l) {
 }
 
 /// Função que insere novos veiculos eletricos
-void ReadElectricVehicleFromIo(Llist *l) {
+void ReadElectricVehicleFromIo(Llist *l, void* g) {
     int id;
     char type[100];
     int battery_lvl;
@@ -212,8 +227,13 @@ void ReadElectricVehicleFromIo(Llist *l) {
     }
 
 
+    ElectricVehicle* v=NULL;
     // Aloca a nova struct ElectricVehicle
     AllocEletricVehicle(l, id, type, battery_lvl, cph, autonomia, latitude, longitude);
+    v = GetVehicle(l, id);
+    if (v != NULL){
+        pesquisa_vertice (g, (Coords)(v->coordenadas));
+    }
 }
 
 /// Função que guarda os dados de um veiculo eletrico em ficheiro de texto (.txt)

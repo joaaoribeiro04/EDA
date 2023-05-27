@@ -56,4 +56,5 @@ CMakeFiles/EDA.dir/main.c.o: /home/jp/Documents/EDA/main.c \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
  /usr/include/strings.h /home/jp/Documents/EDA/cliente.h \
- /home/jp/Documents/EDA/gestor.h /home/jp/Documents/EDA/menu.h
+ /home/jp/Documents/EDA/gestor.h /home/jp/Documents/EDA/grafo.h \
+ /home/jp/Documents/EDA/menu.h

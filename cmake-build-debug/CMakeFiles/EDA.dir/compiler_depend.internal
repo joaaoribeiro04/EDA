@@ -346,6 +346,7 @@ CMakeFiles/EDA.dir/main.c.o
  /usr/include/strings.h
  /home/jp/Documents/EDA/cliente.h
  /home/jp/Documents/EDA/gestor.h
+ /home/jp/Documents/EDA/grafo.h
  /home/jp/Documents/EDA/menu.h
 
 CMakeFiles/EDA.dir/meio.c.o

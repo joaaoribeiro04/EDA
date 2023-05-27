@@ -24,5 +24,6 @@ void addVertex(Graph* graph, double minLat, double maxLat, double minLong, doubl
 void addEdge(Graph* graph, int src, int dest);
 int findVertex(Graph* graph, double latitude, double longitude);
 void freeGraph(Graph* graph);
+Graph* inicia_posicao();
 
 #endif

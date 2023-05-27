@@ -5,6 +5,7 @@
 #include "dlist.h"
 #include "utils.h"
 #include "string.h"
+/*#include "grafo.h"*/
 
 typedef struct {
     double latitude;
@@ -23,8 +24,9 @@ typedef struct electric_vehicle {
 } ElectricVehicle;
 
 
+ElectricVehicle* GetVehicle (Llist *l, int id);
 void AllocEletricVehicle(Llist *l,int id, char *type, int battery_lvl, float cph, int autonomia, double latitude, double longitude);
-void ReadElectricVehicleFromIo(Llist *l);
+void ReadElectricVehicleFromIo(Llist *l, void* g);
 void ShowEletricVehicles(Llist* l);
 void WriteToTextFile(Llist *l, const char *filename);
 void ReadFromTextFile(Llist *l, const char *filename);
@@ -33,6 +35,7 @@ void SetEletricVehicle(Llist *l, int id , char *new_type, int new_battery_lvl, f
 void SetAndReadEletricVehicle(Llist *l);
 void RmEletricVehicle(Llist *l, int id );
 void RmEletricVehicleAndReadId(Llist *l );
+int pesquisa_vertice (void* graph, Coords c);
 
 
 #endif
