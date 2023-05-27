@@ -1,6 +1,7 @@
 #ifndef GRAFO_H
 #define GRAFO_H
 
+#include <stdio.h>
 #include "meio.h"
 
 typedef struct AdjListNode {

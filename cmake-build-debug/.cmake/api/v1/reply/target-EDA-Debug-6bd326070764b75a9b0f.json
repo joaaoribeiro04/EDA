@@ -120,7 +120,8 @@
 				3,
 				6,
 				8,
-				11
+				11,
+				12
 			]
 		}
 	],
@@ -191,6 +192,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "grafo.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "menu.h",
 			"sourceGroupIndex" : 1
 		}
 	],

@@ -109,6 +109,9 @@
 		<Unit filename="/home/jp/Documents/EDA/meio.h">
 			<Option target="EDA"/>
 		</Unit>
+		<Unit filename="/home/jp/Documents/EDA/menu.h">
+			<Option target="EDA"/>
+		</Unit>
 		<Unit filename="/home/jp/Documents/EDA/utils.c">
 			<Option target="EDA"/>
 		</Unit>
