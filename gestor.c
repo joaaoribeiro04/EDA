@@ -123,7 +123,7 @@ void ShowManager(Llist* l) {
         Gestor *v = l->get(l,i);
         if (v == NULL)
             continue;
-        printf("ID do gestor -> %d\n", v->id);
+        printf("\nID do gestor -> %d\n", v->id);
         printf("UserName do gestor -> %s\n", v->username);
         printf("Password do gestor -> %s\n", v->password);
     }

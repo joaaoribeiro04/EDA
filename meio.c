@@ -147,7 +147,7 @@ void ShowEletricVehicles(Llist* l) {
         ElectricVehicle *v = l->get(l,i);
         if (v == NULL)
             continue;
-        printf("Id de veiculo -> %d\n", v->id);
+        printf("\nId de veiculo -> %d\n", v->id);
         printf("Tipo de veiculo -> %s\n", v->type);
         printf("Bateria de veiculo -> %d\n", v->battery_level);
         printf("Custo por hora -> %f\n", v->cost_per_hour);
@@ -287,3 +287,4 @@ void write_to_binary_file(Llist *l, const char *filename) {
     }
     fclose(file);
 }
+

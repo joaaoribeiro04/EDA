@@ -22,6 +22,7 @@ typedef struct electric_vehicle {
     Coords coordenadas;
 } ElectricVehicle;
 
+
 void AllocEletricVehicle(Llist *l,int id, char *type, int battery_lvl, float cph, int autonomia, double latitude, double longitude);
 void ReadElectricVehicleFromIo(Llist *l);
 void ShowEletricVehicles(Llist* l);

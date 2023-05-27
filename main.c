@@ -1,7 +1,7 @@
 #include "meio.h"
 #include "stdio.h"
 #include "cliente.h"
-/*#include "gestor.h"
+#include "gestor.h"
 
 #include "utils.h"
 #include "menu.h"
@@ -167,10 +167,10 @@ int main() {
 
 
     return 0;
-}*/
+}
 
 
-#include <stdio.h>
+/*#include <stdio.h>
 #include "grafo.h"
 
 int main() {
@@ -206,7 +206,7 @@ int main() {
     freeGraph(graph);
 
     return 0;
-}
+}*/
 
 
 

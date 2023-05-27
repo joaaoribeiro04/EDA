@@ -340,7 +340,8 @@ CMakeFiles/EDA.dir/main.c.o: /home/jp/Documents/EDA/main.c \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
   /usr/include/strings.h \
   /home/jp/Documents/EDA/cliente.h \
-  /home/jp/Documents/EDA/grafo.h
+  /home/jp/Documents/EDA/gestor.h \
+  /home/jp/Documents/EDA/menu.h
 
 CMakeFiles/EDA.dir/meio.c.o: /home/jp/Documents/EDA/meio.c \
   /usr/include/stdc-predef.h \
@@ -445,6 +446,8 @@ CMakeFiles/EDA.dir/utils.c.o: /home/jp/Documents/EDA/utils.c \
 /home/jp/Documents/EDA/utils.c:
 
 /home/jp/Documents/EDA/meio.c:
+
+/home/jp/Documents/EDA/menu.h:
 
 /home/jp/Documents/EDA/main.c:
 

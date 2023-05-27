@@ -159,7 +159,7 @@ void ShowClient(Llist* l) {
         Client *v = l->get(l,i);
         if (v == NULL)
             continue;
-        printf("ID do cliente -> %d\n", v->id);
+        printf("\nID do cliente -> %d\n", v->id);
         printf("NIF do cliente -> %d\n", v->nif);
         printf("Nome do cliente -> %s\n", v->name);
         printf("Morada do cliente -> %s\n", v->address);
