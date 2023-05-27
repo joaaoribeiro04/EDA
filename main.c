@@ -11,12 +11,15 @@ Graph* inicia_posicao(){
     Graph* graph = createGraph();
 
     // Adicionar vértices ao grafo com intervalos de latitude e longitude
-    addVertex(graph, 1.0, 9.0, 1.0, 19.0);
-    addVertex(graph, 10.0, 20.0, 20.0, 30.0);
-    addVertex(graph, 30.0, 40.0, 40.0, 50.0);
-    addVertex(graph, 50.0, 60.0, 60.0, 70.0);
-    addVertex(graph, 70.0, 80.0, 80.0, 90.0);
-    addVertex(graph, 90.0, 100.0, 100.0, 110.0);
+    addVertex(graph, 1.0, 100.0, 1.0, 100.0);
+    addVertex(graph, 101.0, 200.0, 101.0, 200.0);
+    addVertex(graph, 201.0, 300.0, 201.0, 300.0);
+    addVertex(graph, 301.0, 400.0, 301.0, 400.0);
+    addVertex(graph, 401.0, 500.0, 401.0, 500.0);
+    addVertex(graph, 501.0, 600.0, 501.0, 600.0);
+    addVertex(graph, 601.0, 700.0, 601.0, 700.0);
+    addVertex(graph, 701.0, 800.0, 701.0, 800.0);
+    addVertex(graph, 801.0, 900.0, 801.0, 900.0);
 
     // Adicionar arestas ao grafo
     addEdge(graph, 0, 1);
@@ -25,6 +28,9 @@ Graph* inicia_posicao(){
     addEdge(graph, 2, 3);
     addEdge(graph, 3, 4);
     addEdge(graph, 4, 5);
+    addEdge(graph, 5, 6);
+    addEdge(graph, 6, 7);
+    addEdge(graph, 7, 8);
 
     return graph;
 }
