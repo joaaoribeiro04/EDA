@@ -26,5 +26,7 @@ void SetClient(Llist *l, int id , int new_nif, char *new_name, char *new_address
 void SetAndReadClient(Llist *l);
 void RmClient(Llist *l, int id );
 void RmClienAndReadId(Llist *l );
+double calculate_distance(Coords coord1, Coords coord2);
+void get_vehicles_within_radius(Llist *clients, Llist *vehicles, double radius);
 
 #endif

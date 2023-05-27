@@ -40,6 +40,7 @@ void print_client_menu() {
     printf("4. Remover cliente\n");
     printf("5. Armazenar os dados de clientes em ficheiro de texto\n");
     printf("6. Armazenar os dados de clientes em binario \n");
+    printf("7. Distância dos veiculos\n");
     printf("0. Voltar ao menu de opcoes\n");
     printf("Por favor, insira a sua escolha: " C_RESET);
 }

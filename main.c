@@ -59,6 +59,7 @@ int main() {
     Graph* graph = inicia_posicao();
 
 
+
     ReadFromTextFile(listaveiculos,"Meios.txt");
     ReadClientFromTextFile(listacliete, "Clientes.txt");
     ReadManagerFromTextFile(listagestor,"Gestor.txt" );
@@ -151,6 +152,9 @@ int main() {
                         case 6:
                             write_to_binary_file_client(listacliete, "Clientes.bin");
                             break;
+                        case 7:
+                            get_vehicles_within_radius(listacliete, listaveiculos, 5000);
+                            break;
                         case 0:
                             break;
                         default:
@@ -215,6 +219,8 @@ int main() {
 
     return 0;
 }
+
+
 
 
 

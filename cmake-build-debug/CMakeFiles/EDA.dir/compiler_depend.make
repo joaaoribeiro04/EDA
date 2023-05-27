@@ -67,7 +67,15 @@ CMakeFiles/EDA.dir/cliente.c.o: /home/jp/Documents/EDA/cliente.c \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
   /usr/include/strings.h \
-  /home/jp/Documents/EDA/meio.h
+  /home/jp/Documents/EDA/meio.h \
+  /usr/include/math.h \
+  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
+  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls.h
 
 CMakeFiles/EDA.dir/dlist.c.o: /home/jp/Documents/EDA/dlist.c \
   /usr/include/stdc-predef.h \
@@ -498,10 +506,6 @@ CMakeFiles/EDA.dir/utils.c.o: /home/jp/Documents/EDA/utils.c \
 
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
 
-/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
-
-/usr/include/inttypes.h:
-
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/stddef.h:
@@ -548,6 +552,10 @@ CMakeFiles/EDA.dir/utils.c.o: /home/jp/Documents/EDA/utils.c \
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
+/home/jp/Documents/EDA/grafo.c:
+
+/usr/include/stdint.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
 /usr/include/stdlib.h:
@@ -588,16 +596,6 @@ CMakeFiles/EDA.dir/utils.c.o: /home/jp/Documents/EDA/utils.c \
 
 /usr/include/string.h:
 
-/home/jp/Documents/EDA/dlist.c:
-
-/usr/include/x86_64-linux-gnu/bits/endian.h:
-
-/home/jp/Documents/EDA/gestor.h:
-
-/usr/include/stdint.h:
-
-/home/jp/Documents/EDA/grafo.c:
-
 /usr/include/math.h:
 
 /usr/include/alloca.h:
@@ -611,3 +609,13 @@ CMakeFiles/EDA.dir/utils.c.o: /home/jp/Documents/EDA/utils.c \
 /usr/include/x86_64-linux-gnu/bits/fp-logb.h:
 
 /usr/include/x86_64-linux-gnu/bits/fp-fast.h:
+
+/usr/include/inttypes.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+
+/home/jp/Documents/EDA/dlist.c:
+
+/usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/home/jp/Documents/EDA/gestor.h:

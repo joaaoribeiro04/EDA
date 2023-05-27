@@ -1,4 +1,41 @@
 #include "cliente.h"
+#include <math.h>
+
+#define EARTH_RADIUS_KM 6371.0
+
+double calculate_distance(Coords coord1, Coords coord2) {
+    double dlat = coord2.latitude - coord1.latitude;
+    double dlon = coord2.longitude - coord1.longitude;
+
+    double a = sin(dlat/2) * sin(dlat/2) +
+               cos(coord1.latitude) * cos(coord2.latitude) * sin(dlon/2) * sin(dlon/2);
+    double c = 2 * atan2(sqrt(a), sqrt(1-a));
+
+
+    double r = EARTH_RADIUS_KM * c;
+    /*printf("%lf\n", r);*/
+    return r;
+}
+
+void get_vehicles_within_radius(Llist *clients, Llist *vehicles, double radius) {
+    for (size_t i = 0; i < clients->len; i++) {
+        Client *client = clients->get(clients, i);
+        printf("Client ID: %d\n", client->id);
+        printf("Vehicles within %.2f unidades:\n", radius);
+
+        for (size_t j = 0; j < vehicles->len; j++) {
+            ElectricVehicle *vehicle = vehicles->get(vehicles, j);
+            double distance = calculate_distance(client->coordenadas, vehicle->coordenadas);
+
+            if (distance <= radius) {
+                printf("Vehicle ID: %d, Distance: %.2f unidades\n", vehicle->id, distance);
+            }
+        }
+
+        printf("\n");
+    }
+}
+
 
 void AllocClient(Llist *l, int id, int nif, char *name, char *address, float balance, double latitude, double longitude) {
     Client *v = (Client*) malloc(sizeof (Client));
